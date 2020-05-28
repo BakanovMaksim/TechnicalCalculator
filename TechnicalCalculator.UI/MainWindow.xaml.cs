@@ -30,29 +30,7 @@ namespace TechnicalCalculator.UI
 
         private void buttonEnter_Click(object sender, RoutedEventArgs e)
         {
-            var firstItem = textBlockResult.Text.TakeWhile(p => char.IsDigit(p));
-
-            var x = int.Parse(ParseInt(firstItem));
-
-            var secondItem = textBlockResult.Text.SkipWhile(p => char.IsDigit(p)).SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p));
-            var y = int.Parse(ParseInt(secondItem));
-
-            var itemOperation = textBlockResult.Text.SkipWhile(p => char.IsDigit(p)).TakeWhile(p => !char.IsDigit(p));
-            var operation = ParseInt(itemOperation);
-
-            var result = CalculatorController.SelectedOperation(operation,x,y);
-
-            textBlockResult.Text = result.ToString();
-        }
-
-        private string ParseInt(IEnumerable<char> items)
-        {
-            var str = "";
-
-            foreach (var item in items)
-                str += item;
-
-            return str;
+           
         }
     }
 }

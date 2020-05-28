@@ -5,36 +5,38 @@ namespace TechnicalCalculator.BL.Controller
 {
     public class CalculatorController
     {
-        public Operands Operands { get; set; }
+        public Operands Operands { get; private set; }
 
         public Operations Operations { get; }
+
+        public ResultNumber ResultNumber { get; private set; }
 
         public CalculatorController()
         {
             Operations = new Operations();
         }
 
-        public int SelectedOperation(string operation,int x,int y)
+        public void SelectedOperation(string operation,Operands operands)
         {
-            var result = 0;
+            Operands = operands;
 
             switch(operation)
             {
                 case "+":
-                    result = Operations.Addition(x,y);
+                    Operations.Addition(operands.FirstNumber.Value,operands.SecondNumber.Value);
                     break;
                 case "-":
-                    result = Operations.Subsctraction(x,y);
+                    Operations.Subsctraction(operands.FirstNumber.Value, operands.SecondNumber.Value);
                     break;
                 case "*":
-                    result = Operations.Multiplication(x,y);
+                    Operations.Multiplication(operands.FirstNumber.Value, operands.SecondNumber.Value);
                     break;
                 case "/":
-                    result = Operations.Division(x,y);
+                    Operations.Division(operands.FirstNumber.Value, operands.SecondNumber.Value);
                     break;
             }
 
-            return result;
+            //TODO: Дописать присвоение Result
         }
     }
 }

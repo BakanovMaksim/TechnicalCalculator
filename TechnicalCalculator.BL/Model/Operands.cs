@@ -2,12 +2,36 @@
 
 namespace TechnicalCalculator.BL.Model
 {
+    /// <summary>
+    /// Операнды.
+    /// </summary>
     public class Operands
     {
-        public int FirstNumber { get; set; }
+        /// <summary>
+        /// Первое число.
+        /// </summary>
+        public FirstNumber FirstNumber { get; }
 
-        public int SecondNumber { get; set; }
+        /// <summary>
+        /// Второе число.
+        /// </summary>
+        public SecondNumber SecondNumber { get; }
 
-        public int Result { get; set; }
+        /// <summary>
+        /// Заполнение данных.
+        /// </summary>
+        /// <param name="firstNumber"> Первое число. </param>
+        /// <param name="secondNumber"> Второе число. </param>
+        public Operands(
+            FirstNumber firstNumber,
+            SecondNumber secondNumber)
+        {
+            if (firstNumber == null) throw new ArgumentNullException("Первое число не может быть пустым.", nameof(firstNumber));
+
+            if (secondNumber == null) throw new ArgumentNullException("Второе число не может быть пустым.", nameof(secondNumber));
+
+            FirstNumber = firstNumber;
+            SecondNumber = secondNumber;
+        }
     }
 }
