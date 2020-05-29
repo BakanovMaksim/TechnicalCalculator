@@ -11,15 +11,15 @@ namespace TechnicalCalculatorTests
         public void BinaryOperation_InputArgument_ReturnedValue()
         {
             //Arrange
-            var operations = new Operations();
+            var operations = new Operation();
             var firstNumber = new FirstNumber(8);
             var secondNumber = new SecondNumber(4);
 
             //Act
-            var resultAddition = operations.Addition(firstNumber, secondNumber);
-            var resultSubsctraction = operations.Subsctraction(firstNumber, secondNumber);
-            var resultMultiplication = operations.Multiplication(firstNumber, secondNumber);
-            var resultDivision = operations.Division(firstNumber, secondNumber);
+            var resultAddition = operations.BinaryOperations.Addition(firstNumber, secondNumber);
+            var resultSubsctraction = operations.BinaryOperations.Subsctraction(firstNumber, secondNumber);
+            var resultMultiplication = operations.BinaryOperations.Multiplication(firstNumber, secondNumber);
+            var resultDivision = operations.BinaryOperations.Division(firstNumber, secondNumber);
 
             //Assert
             Assert.AreEqual(12, resultAddition.Value);
