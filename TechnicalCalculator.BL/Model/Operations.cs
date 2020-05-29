@@ -14,7 +14,7 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public int Addition(int x, int y) => x + y;
+        public ResultNumber Addition(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber + secondNumber);
 
         /// <summary>
         /// Операция вычитания.
@@ -22,7 +22,7 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public int Subsctraction(int x, int y) => x - y;
+        public ResultNumber Subsctraction(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber - secondNumber);
 
         /// <summary>
         /// Операция умножения.
@@ -30,7 +30,7 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public int Multiplication(int x,int y) => x * y;
+        public ResultNumber Multiplication(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber * secondNumber);
 
         /// <summary>
         /// Операция деления.
@@ -38,6 +38,6 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public int Division(int x,int y) => x / y;
+        public ResultNumber Division(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber / secondNumber);
     }
 }

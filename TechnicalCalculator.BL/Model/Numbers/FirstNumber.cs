@@ -13,6 +13,6 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="type"> Тип. </param>
         /// <param name="value"> Значение. </param>
         /// <param name="numberSystem"> Система счисления. </param>
-        public FirstNumber(string type,int value,string numberSystem) : base(type, value, numberSystem) { }
+        public FirstNumber(int value) : base(value) { }
     }
 }

@@ -16,27 +16,25 @@ namespace TechnicalCalculator.BL.Controller
             Operations = new Operations();
         }
 
-        public void SelectedOperation(string operation,Operands operands)
+        public void SelectedOperation(string operation, Operands operands)
         {
             Operands = operands;
 
-            switch(operation)
+            switch (operation)
             {
                 case "+":
-                    Operations.Addition(operands.FirstNumber.Value,operands.SecondNumber.Value);
+                    ResultNumber = Operations.Addition(operands.FirstNumber, operands.SecondNumber);
                     break;
                 case "-":
-                    Operations.Subsctraction(operands.FirstNumber.Value, operands.SecondNumber.Value);
+                    ResultNumber = Operations.Subsctraction(operands.FirstNumber, operands.SecondNumber);
                     break;
                 case "*":
-                    Operations.Multiplication(operands.FirstNumber.Value, operands.SecondNumber.Value);
+                    ResultNumber = Operations.Multiplication(operands.FirstNumber, operands.SecondNumber);
                     break;
                 case "/":
-                    Operations.Division(operands.FirstNumber.Value, operands.SecondNumber.Value);
+                    ResultNumber = Operations.Division(operands.FirstNumber, operands.SecondNumber);
                     break;
             }
-
-            //TODO: Дописать присвоение Result
         }
     }
 }
