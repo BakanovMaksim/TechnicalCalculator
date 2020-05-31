@@ -31,6 +31,9 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="numberSystem"> Система счисления. </param>
         public Number(int value)
         {
+            if (value.GetType() != typeof(int)) throw new ArgumentException("Значение должно быть целым числом.", nameof(value));
+
+            Type = value.GetType().ToString();
             Value = value;
         }
 
@@ -42,6 +45,6 @@ namespace TechnicalCalculator.BL.Model
 
         public static Number operator /(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value / secondNumber.Value);
 
-        public override string ToString() => $"{Value} - {NumberSystem}";
+        public static Number operator %(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value % secondNumber.Value);
     }
 }

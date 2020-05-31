@@ -56,6 +56,9 @@ namespace TechnicalCalculator.BL.Controller
                 case "/":
                     ResultNumber = Operations.BinaryOperations.Division(operands.FirstNumber, operands.SecondNumber);
                     break;
+                case "%":
+                    ResultNumber = Operations.BinaryOperations.DivisionReaminder(operands.FirstNumber, operands.SecondNumber);
+                    break;
             }
         }
     }

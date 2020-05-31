@@ -35,5 +35,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат деления. </returns>
         public ResultNumber Division(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber / secondNumber);
+
+        public ResultNumber DivisionReaminder(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber % secondNumber);
     }
 }
