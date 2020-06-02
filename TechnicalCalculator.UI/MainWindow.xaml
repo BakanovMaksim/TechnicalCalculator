@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TechnicalCalculator.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="500"
+        Title="MainWindow" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="70"/>
+        <Style TargetType="TextBlock" x:Key="textBlockStyle">
+            <Setter Property="FontSize" Value="55"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -24,11 +24,17 @@
         <SolidColorBrush x:Key="buttonControl" Color="#0e2139"/>
         <SolidColorBrush x:Key="buttonDigit" Color="#072c63"/>
         <SolidColorBrush x:Key="buttonEnt" Color="#162e54"/>
+        <SolidColorBrush x:Key="buttonOperation" Color="#0e214f"/>
     </Window.Resources>
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -40,31 +46,77 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="textBlockResult" Grid.Row="0" Text="0" Grid.Column="3"/>
+        <Expander Grid.ColumnSpan="8" HorizontalAlignment="Center">
+            <ToolBar>
+                <Menu>
+                    <MenuItem x:Name="menuItemEngineering" Header="Инженерный"/>
+                </Menu>
+            </ToolBar>
+        </Expander>
 
-        <Button Grid.Row="1" Grid.Column="2" Content="+/-" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="1" Grid.Column="0" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="CE" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
+        <TextBlock x:Name="textBlockResult" Grid.Row="0" Grid.ColumnSpan="8" Text="0" Style="{StaticResource textBlockStyle}"/>
 
-        <Button Grid.Row="2" Grid.Column="0" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="8" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="2" Grid.Column="2" Content="9" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="3" Grid.Column="0" Content="4" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="5" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="3" Grid.Column="2" Content="6" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="4" Grid.Column="0" Content="1" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="4" Grid.Column="1" Content="2" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="4" Grid.Column="2" Content="3" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="5" Grid.Column="0" Content="0" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Label Grid.Row="1" Grid.Column="4" Content="Memory" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3" Background="#0e2139"/>
 
-        <Button Grid.Row="5" Grid.Column="1" Content="." Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="1" Grid.Column="3" Content="%" Click="buttonNumber_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="3" Content="/" Click="buttonNumber_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="3" Grid.Column="3" Content="*" Click="buttonNumber_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="4" Grid.Column="4" Content="-" Click="buttonNumber_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="5" Grid.Column="4" Content="+" Click="buttonNumber_Click" Background="{StaticResource buttonControl}"/>
-        <Button x:Name="buttonEnter" Grid.Row="5" Grid.Column="2" Content="=" Background="{StaticResource buttonEnt}" Click="buttonEnter_Click"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="CE" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="MS" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="5" Content="(" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="6" Content=")" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="7" Content="" Background="{StaticResource buttonControl}"/>
+
+        <Button Grid.Row="3" Grid.Column="3" Grid.RowSpan="2" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="3" Grid.Column="4" Grid.RowSpan="2" Content="8" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Content="9" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="5" Grid.Column="3" Grid.RowSpan="2" Content="4" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="5" Grid.Column="4" Grid.RowSpan="2" Content="5" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="6" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="7" Grid.Column="3" Grid.RowSpan="2" Content="1" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="7" Grid.Column="4" Grid.RowSpan="2" Content="2" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" Content="3" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="9" Grid.Column="3" Grid.RowSpan="2" Content="0" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="9" Grid.Column="4" Grid.RowSpan="2" Content="00" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+
+        <Button Grid.Row="9" Grid.Column="5" Grid.RowSpan="2" Content="." Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="9" Grid.Column="7" Grid.RowSpan="2" Content="%" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="7" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="6" Grid.RowSpan="2" Content="*" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="7" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="6" Grid.RowSpan="2" Content="+" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+
+        <Button Grid.Row="3" Grid.Column="6" Content="x²" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="3" Grid.Column="7" Content="x³" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="4" Grid.Column="6" Content="+/-" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="4" Grid.Column="7" Content="xⁿ" Background="{StaticResource buttonOperation}"/>
+
+        <Button Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Content="Ln" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Content="Logₓ y" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" Content="Lg" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Content="e" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="1" Grid.RowSpan="2" Content="П" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" Content="X!" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="0" Content="√" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="³√" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="2" Content="ⁿ√" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="8" Grid.Column="0" Content="sin" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="8" Grid.Column="1" Content="cos" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="8" Grid.Column="2" Content="sin⁻¹" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="9" Grid.Column="0" Content="cos⁻¹" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="9" Grid.Column="1" Content="tg" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="9" Grid.Column="2" Content="tg⁻¹" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="10" Grid.Column="0" Content="ctg" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="10" Grid.Column="1" Content="ctg⁻¹" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="10" Grid.Column="2" Content="|x|" Background="{StaticResource buttonOperation}"/>
+
+        <Button x:Name="buttonEnter" Grid.Row="9" Grid.Column="6" Grid.RowSpan="2" Content="=" Click="buttonEnter_Click" Background="{StaticResource buttonEnt}"/>
     </Grid>
 </Window>

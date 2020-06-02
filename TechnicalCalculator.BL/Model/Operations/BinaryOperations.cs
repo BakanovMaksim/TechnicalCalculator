@@ -10,7 +10,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд </param>
         /// <param name="secondNumber"> Второй операнд </param>
         /// <returns> Результат сложения. </returns>
-        public ResultNumber Addition(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber + secondNumber);
+        public Number Addition(Number firstNumber, Number secondNumber) => firstNumber + secondNumber;
 
         /// <summary>
         /// Операция вычитания.
@@ -18,7 +18,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат вычитания. </returns>
-        public ResultNumber Subsctraction(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber - secondNumber);
+        public Number Subsctraction(Number firstNumber, Number secondNumber) => firstNumber - secondNumber;
 
         /// <summary>
         /// Операция умножения.
@@ -26,7 +26,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат умножения. </returns>
-        public ResultNumber Multiplication(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber * secondNumber);
+        public Number Multiplication(Number firstNumber, Number secondNumber) => firstNumber * secondNumber;
 
         /// <summary>
         /// Операция деления.
@@ -34,8 +34,14 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат деления. </returns>
-        public ResultNumber Division(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber / secondNumber);
+        public Number Division(Number firstNumber, Number secondNumber) => firstNumber / secondNumber;
 
-        public ResultNumber DivisionReaminder(FirstNumber firstNumber, SecondNumber secondNumber) => (ResultNumber)(firstNumber % secondNumber);
+        /// <summary>
+        /// Операция деления с остатком.
+        /// </summary>
+        /// <param name="firstNumber"> Первый операнд. </param>
+        /// <param name="secondNumber"> Второй операнд. </param>
+        /// <returns> Результат деления с остатком. </returns>
+        public Number DivisionReaminder(Number firstNumber, Number secondNumber) => firstNumber % secondNumber;
     }
 }

@@ -19,7 +19,7 @@ namespace TechnicalCalculator.BL.Controller
         /// <summary>
         /// Результат.
         /// </summary>
-        public ResultNumber ResultNumber { get; private set; }
+        public Number ResultNumber { get; private set; }
         #endregion
 
         public CalculatorController()

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
 
 namespace TechnicalCalculator.BL.Model
 {
     /// <summary>
     /// Абстрактный класс для числа.
     /// </summary>
-    public abstract class Number
+    public class Number
     {
         /// <summary>
         /// Тип числа.
@@ -26,7 +25,6 @@ namespace TechnicalCalculator.BL.Model
         /// <summary>
         /// Заполнение данных.
         /// </summary>
-        /// <param name="type"> Тип. </param>
         /// <param name="value"> Значение. </param>
         /// <param name="numberSystem"> Система счисления. </param>
         public Number(int value)
@@ -37,14 +35,14 @@ namespace TechnicalCalculator.BL.Model
             Value = value;
         }
 
-        public static Number operator +(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value + secondNumber.Value);
+        public static Number operator +(Number firstNumber, Number secondNumber) => new Number(firstNumber.Value + secondNumber.Value);
 
-        public static Number operator -(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value - secondNumber.Value);
+        public static Number operator -(Number firstNumber, Number secondNumber) => new Number(firstNumber.Value - secondNumber.Value);
 
-        public static Number operator *(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value * secondNumber.Value);
+        public static Number operator *(Number firstNumber, Number secondNumber) => new Number(firstNumber.Value * secondNumber.Value);
 
-        public static Number operator /(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value / secondNumber.Value);
+        public static Number operator /(Number firstNumber, Number secondNumber) => new Number(firstNumber.Value / secondNumber.Value);
 
-        public static Number operator %(Number firstNumber, Number secondNumber) => new ResultNumber(firstNumber.Value % secondNumber.Value);
+        public static Number operator %(Number firstNumber, Number secondNumber) => new Number(firstNumber.Value % secondNumber.Value);
     }
 }

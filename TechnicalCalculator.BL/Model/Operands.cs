@@ -10,12 +10,12 @@ namespace TechnicalCalculator.BL.Model
         /// <summary>
         /// Первое число.
         /// </summary>
-        public FirstNumber FirstNumber { get; }
+        public Number FirstNumber { get; }
 
         /// <summary>
         /// Второе число.
         /// </summary>
-        public SecondNumber SecondNumber { get; }
+        public Number SecondNumber { get; }
 
         /// <summary>
         /// Заполнение данных.
@@ -23,12 +23,14 @@ namespace TechnicalCalculator.BL.Model
         /// <param name="firstNumber"> Первое число. </param>
         /// <param name="secondNumber"> Второе число. </param>
         public Operands(
-            FirstNumber firstNumber,
-            SecondNumber secondNumber)
+            Number firstNumber,
+            Number secondNumber)
         {
+            #region Проверка условий
             if (firstNumber == null) throw new ArgumentNullException("Первое число не может быть пустым.", nameof(firstNumber));
 
             if (secondNumber == null) throw new ArgumentNullException("Второе число не может быть пустым.", nameof(secondNumber));
+            #endregion
 
             FirstNumber = firstNumber;
             SecondNumber = secondNumber;
