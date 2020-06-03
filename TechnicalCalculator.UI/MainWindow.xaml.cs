@@ -8,9 +8,6 @@ using TechnicalCalculator.BL.Model;
 
 namespace TechnicalCalculator.UI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private CalculatorController CalculatorController { get; set; }
@@ -22,6 +19,11 @@ namespace TechnicalCalculator.UI
             CalculatorController = new CalculatorController();
         }
 
+        /// <summary>
+        /// Запись на экран чисел и бинарных операций.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonNumber_Click(object sender, RoutedEventArgs e)
         {
             if (textBlockResult.Text.Length == 1 && textBlockResult.Text == "0") textBlockResult.Text = string.Empty;
@@ -29,6 +31,11 @@ namespace TechnicalCalculator.UI
             textBlockResult.Text += ((Button)e.OriginalSource).Content.ToString();
         }
 
+        /// <summary>
+        /// Получение первог,второго операнда и операции и вывод результата на экран.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEnter_Click(object sender, RoutedEventArgs e)
         {
             var itemsFirstNumber = textBlockResult.Text.TakeWhile(p => char.IsDigit(p)).Select(p => p);
@@ -44,6 +51,11 @@ namespace TechnicalCalculator.UI
             textBlockResult.Text = CalculatorController.ResultNumber.Value.ToString();
         }
 
+        /// <summary>
+        /// Парсинг в string отложенных данных из linq.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         private string ParseString(IEnumerable<char> items)
         {
             var str = "";
@@ -54,9 +66,23 @@ namespace TechnicalCalculator.UI
             return str;
         }
 
+        /// <summary>
+        /// Очистка поля.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
             textBlockResult.Text = 0.ToString();
         }
+
+        /// <summary>
+        /// Отображение возведения в степень.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonExponentiation_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "^";
+
+        private void buttonFactorial_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "!0";
     }
 }

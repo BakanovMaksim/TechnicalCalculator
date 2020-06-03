@@ -48,8 +48,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Expander Grid.ColumnSpan="8" HorizontalAlignment="Center">
@@ -62,60 +60,42 @@
 
         <TextBlock x:Name="textBlockResult" Grid.Row="0" Grid.ColumnSpan="8" Text="0" Style="{StaticResource textBlockStyle}"/>
 
-        <Label Grid.Row="1" Grid.Column="4" Content="Memory" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3" Background="#0e2139"/>
+        <Label Grid.Row="1" Grid.Column="3" Content="Memory" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Background="#0e2139"/>
 
-        <Button Grid.Row="2" Grid.Column="0" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="CE" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="5" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Content="CE" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}"/>
         <Button Grid.Row="2" Grid.Column="2" Content="MS" Background="{StaticResource buttonControl}"/>
         <Button Grid.Row="2" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}"/>
         <Button Grid.Row="2" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="5" Content="(" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="6" Content=")" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="7" Content="" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="(" Background="{StaticResource buttonControl}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content=")" Background="{StaticResource buttonControl}"/>
 
-        <Button Grid.Row="3" Grid.Column="3" Grid.RowSpan="2" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="3" Grid.Column="4" Grid.RowSpan="2" Content="8" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Content="9" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="5" Grid.Column="3" Grid.RowSpan="2" Content="4" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="5" Grid.Column="4" Grid.RowSpan="2" Content="5" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="6" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="7" Grid.Column="3" Grid.RowSpan="2" Content="1" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="7" Grid.Column="4" Grid.RowSpan="2" Content="2" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" Content="3" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="9" Grid.Column="3" Grid.RowSpan="2" Content="0" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="9" Grid.Column="4" Grid.RowSpan="2" Content="00" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="3" Grid.Column="3" Grid.RowSpan="2" Content="8" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="3" Grid.Column="4" Grid.RowSpan="2" Content="9" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" Content="4" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="5" Grid.Column="3" Grid.RowSpan="2" Content="5" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="5" Grid.Column="4" Grid.RowSpan="2" Content="6" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="7" Grid.Column="2" Grid.RowSpan="2" Content="1" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="7" Grid.Column="3" Grid.RowSpan="2" Content="2" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="7" Grid.Column="4" Grid.RowSpan="2" Content="3" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="9" Grid.Column="2" Grid.RowSpan="2" Content="0" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="9" Grid.Column="3" Grid.RowSpan="2" Content="00" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
 
-        <Button Grid.Row="9" Grid.Column="5" Grid.RowSpan="2" Content="." Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="9" Grid.Column="7" Grid.RowSpan="2" Content="%" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="7" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="6" Grid.RowSpan="2" Content="*" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="7" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="6" Grid.RowSpan="2" Content="+" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="9" Grid.Column="4" Grid.RowSpan="2" Content="." Background="{StaticResource buttonDigit}"/>
+        <Button Grid.Row="9" Grid.Column="1" Grid.RowSpan="2" Content="%" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="1" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="0" Grid.RowSpan="2" Content="*" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="1" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Content="+" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
 
-        <Button Grid.Row="3" Grid.Column="6" Content="x²" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="3" Grid.Column="7" Content="x³" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="4" Grid.Column="6" Content="+/-" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="4" Grid.Column="7" Content="xⁿ" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Content="+/-" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Content="xⁿ" Click="buttonExponentiation_Click" Background="{StaticResource buttonOperation}"/>
 
-        <Button Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Content="Ln" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Content="Logₓ y" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" Content="Lg" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Content="e" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="1" Grid.RowSpan="2" Content="П" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" Content="X!" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="0" Content="√" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="1" Content="³√" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="2" Content="ⁿ√" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="8" Grid.Column="0" Content="sin" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="8" Grid.Column="1" Content="cos" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="8" Grid.Column="2" Content="sin⁻¹" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="9" Grid.Column="0" Content="cos⁻¹" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="9" Grid.Column="1" Content="tg" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="9" Grid.Column="2" Content="tg⁻¹" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="10" Grid.Column="0" Content="ctg" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="10" Grid.Column="1" Content="ctg⁻¹" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="10" Grid.Column="2" Content="|x|" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="9" Grid.Column="0" Grid.RowSpan="2" Content="X!" Click="buttonFactorial_Click" Background="{StaticResource buttonOperation}"/>
 
         <Button x:Name="buttonEnter" Grid.Row="9" Grid.Column="6" Grid.RowSpan="2" Content="=" Click="buttonEnter_Click" Background="{StaticResource buttonEnt}"/>
     </Grid>

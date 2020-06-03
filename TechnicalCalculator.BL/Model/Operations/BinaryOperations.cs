@@ -2,6 +2,9 @@
 
 namespace TechnicalCalculator.BL.Model.Operations
 {
+    /// <summary>
+    /// Бинарные операции.
+    /// </summary>
     public class BinaryOperations
     {
         /// <summary>

@@ -13,6 +13,12 @@ namespace TechnicalCalculator.BL.Model
         /// </summary>
         public BinaryOperations BinaryOperations { get; }
 
-        public Operation() => BinaryOperations = new BinaryOperations();
+        public UnaryOperations UnaryOperations { get; }
+
+        public Operation()
+        {
+            BinaryOperations = new BinaryOperations();
+            UnaryOperations = new UnaryOperations();
+        }
     }
 }
