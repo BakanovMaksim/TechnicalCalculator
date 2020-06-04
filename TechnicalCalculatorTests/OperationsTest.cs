@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.VisualBasic.CompilerServices;
 using NUnit.Framework;
 using TechnicalCalculator.BL.Model;
 
@@ -12,20 +13,39 @@ namespace TechnicalCalculatorTests
         {
             //Arrange
             var operations = new Operation();
-            var firstNumber = new FirstNumber(8);
-            var secondNumber = new SecondNumber(4);
+            var firstNumber = new Number(9);
+            var secondNumber = new Number(4);
 
             //Act
             var resultAddition = operations.BinaryOperations.Addition(firstNumber, secondNumber);
             var resultSubsctraction = operations.BinaryOperations.Subsctraction(firstNumber, secondNumber);
             var resultMultiplication = operations.BinaryOperations.Multiplication(firstNumber, secondNumber);
             var resultDivision = operations.BinaryOperations.Division(firstNumber, secondNumber);
+            var resultDivisionReaminder = operations.BinaryOperations.DivisionReaminder(firstNumber, secondNumber);
 
             //Assert
-            Assert.AreEqual(12, resultAddition.Value);
-            Assert.AreEqual(4, resultSubsctraction.Value);
-            Assert.AreEqual(32, resultMultiplication.Value);
-            Assert.AreEqual(2, resultDivision.Value);
+            Assert.AreEqual(13, resultAddition.Value);
+            Assert.AreEqual(5, resultSubsctraction.Value);
+            Assert.AreEqual(36, resultMultiplication.Value);
+            Assert.AreEqual(2.25, resultDivision.Value);
+            Assert.AreEqual(1, resultDivisionReaminder.Value);
+        }
+
+        [Test]
+        public void UnaryOperation_InputArgument_ReturnedValue()
+        {
+            //Arrange
+            var operations = new Operation();
+            var firstNumber = new Number(5);
+            var secondNumber = new Number(3);
+
+            //Act
+            var resultExponentiation = operations.UnaryOperations.Exponentiation(firstNumber, secondNumber);
+            var resultFactorial = operations.UnaryOperations.Factorial(firstNumber);
+
+            //Assert
+            Assert.AreEqual(125, resultExponentiation.Value);
+            Assert.AreEqual(120, resultFactorial.Value);
         }
     }
 }

@@ -84,5 +84,15 @@ namespace TechnicalCalculator.UI
         private void buttonExponentiation_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "^";
 
         private void buttonFactorial_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "!0";
+
+        private void buttonSaveMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = CalculatorController.ResultNumber.Value.ToString();
+
+        private void buttonEnterMemory_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += textBlockMemory.Text;
+
+        private void buttonClearMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = string.Empty;
+
+        private void buttonAddMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = (double.Parse(textBlockMemory.Text) + double.Parse(textBlockResult.Text)).ToString();
+
+        private void buttonSubMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = (double.Parse(textBlockMemory.Text) - double.Parse(textBlockResult.Text)).ToString();
     }
 }

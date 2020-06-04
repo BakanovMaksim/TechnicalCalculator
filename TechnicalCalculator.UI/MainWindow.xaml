@@ -9,11 +9,16 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <Style TargetType="TextBlock" x:Key="textBlockStyle">
+        <Style TargetType="TextBlock" x:Key="textBlockResultStyle">
             <Setter Property="FontSize" Value="55"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="textBlockMemoryStyle">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#0e2139"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="20"/>
@@ -58,18 +63,18 @@
             </ToolBar>
         </Expander>
 
-        <TextBlock x:Name="textBlockResult" Grid.Row="0" Grid.ColumnSpan="8" Text="0" Style="{StaticResource textBlockStyle}"/>
+        <TextBlock x:Name="textBlockResult" Grid.Row="0" Grid.ColumnSpan="8" Text="0" Style="{StaticResource textBlockResultStyle}"/>
 
         <Label Grid.Row="1" Grid.Column="3" Content="Memory" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Background="#0e2139"/>
+        <TextBlock x:Name="textBlockMemory" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource textBlockMemoryStyle}"/>
 
         <Button Grid.Row="2" Grid.Column="5" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
         <Button Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Content="CE" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="2" Content="MS" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}"/>
+        <Button x:Name="buttonAddMemory" Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}" Click="buttonAddMemory_Click"/>
+        <Button x:Name="buttonSubMemory" Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}" Click="buttonSubMemory_Click"/>
+        <Button x:Name="buttonSaveMemory" Grid.Row="2" Grid.Column="2" Content="MS" Background="{StaticResource buttonControl}" Click="buttonSaveMemory_Click"/>
+        <Button x:Name="buttonEnterMemory" Grid.Row="2" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}" Click="buttonEnterMemory_Click"/>
+        <Button x:Name="buttonClearMemory" Grid.Row="2" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}" Click="buttonClearMemory_Click"/>
         <Button Grid.Row="2" Grid.Column="0" Content="(" Background="{StaticResource buttonControl}"/>
         <Button Grid.Row="2" Grid.Column="1" Content=")" Background="{StaticResource buttonControl}"/>
 
