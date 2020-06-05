@@ -69,14 +69,13 @@
         <TextBlock x:Name="textBlockMemory" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource textBlockMemoryStyle}"/>
 
         <Button Grid.Row="2" Grid.Column="5" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Content="CE" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
-        <Button x:Name="buttonAddMemory" Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}" Click="buttonAddMemory_Click"/>
-        <Button x:Name="buttonSubMemory" Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}" Click="buttonSubMemory_Click"/>
+        <Button x:Name="buttonAddMemory" Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}" Click="buttonAddMemory_Click"/>
+        <Button x:Name="buttonSubMemory" Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}" Click="buttonSubMemory_Click"/>
         <Button x:Name="buttonSaveMemory" Grid.Row="2" Grid.Column="2" Content="MS" Background="{StaticResource buttonControl}" Click="buttonSaveMemory_Click"/>
         <Button x:Name="buttonEnterMemory" Grid.Row="2" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}" Click="buttonEnterMemory_Click"/>
         <Button x:Name="buttonClearMemory" Grid.Row="2" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}" Click="buttonClearMemory_Click"/>
-        <Button Grid.Row="2" Grid.Column="0" Content="(" Background="{StaticResource buttonControl}"/>
-        <Button Grid.Row="2" Grid.Column="1" Content=")" Background="{StaticResource buttonControl}"/>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource textBlockMemoryStyle}"/>
 
         <Button Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
         <Button Grid.Row="3" Grid.Column="3" Grid.RowSpan="2" Content="8" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
@@ -90,18 +89,18 @@
         <Button Grid.Row="9" Grid.Column="2" Grid.RowSpan="2" Content="0" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
         <Button Grid.Row="9" Grid.Column="3" Grid.RowSpan="2" Content="00" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
 
-        <Button Grid.Row="9" Grid.Column="4" Grid.RowSpan="2" Content="." Background="{StaticResource buttonDigit}"/>
-        <Button Grid.Row="9" Grid.Column="1" Grid.RowSpan="2" Content="%" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="1" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="7" Grid.Column="0" Grid.RowSpan="2" Content="*" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="1" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
-        <Button Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Content="+" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="9" Grid.Column="4" Grid.RowSpan="2" Content="." Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
+        
+        <Button Grid.Row="9" Grid.Column="1" Grid.RowSpan="2" Content="%" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="1" Grid.RowSpan="2" Content="/" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="7" Grid.Column="0" Grid.RowSpan="2" Content="*" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="1" Grid.RowSpan="2" Content="-" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
+        <Button Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Content="+" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
 
         <Button Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Content="+/-" Background="{StaticResource buttonOperation}"/>
         <Button Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Content="xⁿ" Click="buttonExponentiation_Click" Background="{StaticResource buttonOperation}"/>
-
         <Button Grid.Row="9" Grid.Column="0" Grid.RowSpan="2" Content="X!" Click="buttonFactorial_Click" Background="{StaticResource buttonOperation}"/>
 
-        <Button x:Name="buttonEnter" Grid.Row="9" Grid.Column="6" Grid.RowSpan="2" Content="=" Click="buttonEnter_Click" Background="{StaticResource buttonEnt}"/>
+        <Button x:Name="buttonEnter" Grid.Row="7" Grid.Column="6" Grid.RowSpan="4" Content="=" Click="buttonEnter_Click" Background="{StaticResource buttonEnt}"/>
     </Grid>
 </Window>

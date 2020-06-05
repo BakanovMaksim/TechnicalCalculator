@@ -24,31 +24,58 @@ namespace TechnicalCalculator.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonNumber_Click(object sender, RoutedEventArgs e)
+        private void buttonNumber_Click(object sender, RoutedEventArgs e) => ShowButtonContent(e);
+
+        private void buttonOperation_Click(object sender, RoutedEventArgs e)
+        {
+            var itemsOperation = textBlockResult.Text.Where(p => !char.IsDigit(p) && p != '.');
+
+            if (itemsOperation.Count() == 1)
+            {
+                CompletionData();
+            }
+
+            ShowButtonContent(e);
+        }
+
+        /// <summary>
+        /// Получение первого,второго операнда и операции и вывод результата на экран.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonEnter_Click(object sender, RoutedEventArgs e) => CompletionData();
+
+        private void CompletionData()
+        {
+            var itemsFirstNumber = textBlockResult.Text.TakeWhile(p => char.IsDigit(p));
+            var itemsSecondNumber = textBlockResult.Text.SkipWhile(p => char.IsDigit(p) || p == '.').SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p) || p == '.');
+            var itemsOperation = textBlockResult.Text.SkipWhile(p => char.IsDigit(p) || p == '.').TakeWhile(p => !char.IsDigit(p));
+
+            if (ParseString(itemsOperation) == "!")
+            {
+                var firstNumber = new Number(double.Parse(ParseString(itemsFirstNumber)));
+                CalculatorController.SelectedOperation(ParseString(itemsOperation), new Operands(firstNumber, new Number(0)));
+            }
+            else
+            {
+                var firstNumber = new Number(double.Parse(ParseString(itemsFirstNumber)));
+                var secondNumber = new Number(double.Parse(ParseString(itemsSecondNumber)));
+                var operands = new Operands(firstNumber, secondNumber);
+
+                CalculatorController.SelectedOperation(ParseString(itemsOperation), operands);
+            }
+
+            textBlockResult.Text = CalculatorController.ResultNumber.Value.ToString();
+        }
+
+        /// <summary>
+        /// Отображение контента кнопки на экран.
+        /// </summary>
+        private void ShowButtonContent(RoutedEventArgs e)
         {
             if (textBlockResult.Text.Length == 1 && textBlockResult.Text == "0") textBlockResult.Text = string.Empty;
 
             textBlockResult.Text += ((Button)e.OriginalSource).Content.ToString();
-        }
-
-        /// <summary>
-        /// Получение первог,второго операнда и операции и вывод результата на экран.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonEnter_Click(object sender, RoutedEventArgs e)
-        {
-            var itemsFirstNumber = textBlockResult.Text.TakeWhile(p => char.IsDigit(p)).Select(p => p);
-            var itemsSecondNumber = textBlockResult.Text.SkipWhile(p => char.IsDigit(p)).SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p));
-            var itemsOperation = textBlockResult.Text.SkipWhile(p => char.IsDigit(p)).TakeWhile(p => !char.IsDigit(p));
-
-            var firstNumber = new Number(int.Parse(ParseString(itemsFirstNumber)));
-            var secondNumber = new Number(int.Parse(ParseString(itemsSecondNumber)));
-            var operands = new Operands(firstNumber, secondNumber);
-
-            CalculatorController.SelectedOperation(ParseString(itemsOperation), operands);
-
-            textBlockResult.Text = CalculatorController.ResultNumber.Value.ToString();
         }
 
         /// <summary>
@@ -71,19 +98,11 @@ namespace TechnicalCalculator.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonClear_Click(object sender, RoutedEventArgs e)
-        {
-            textBlockResult.Text = 0.ToString();
-        }
+        private void buttonClear_Click(object sender, RoutedEventArgs e) => textBlockResult.Text = 0.ToString();
 
-        /// <summary>
-        /// Отображение возведения в степень.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void buttonExponentiation_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "^";
 
-        private void buttonFactorial_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "!0";
+        private void buttonFactorial_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "!";
 
         private void buttonSaveMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = CalculatorController.ResultNumber.Value.ToString();
 
