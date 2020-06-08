@@ -38,7 +38,7 @@ namespace TechnicalCalculator.BL.Controller
         {
             if (InitialUnitMeasure.TypeName == "mm" && resultConverUnitMeasure == "cm") ConvertedUnitMeasure = new Centimetre(1 / InitialUnitMeasure.Value);
 
-            if(InitialUnitMeasure.TypeName == "mm" && resultConverUnitMeasure == "dm") ConvertedUnitMeasure = new Decimetre(10 / InitialUnitMeasure.Value);
+            if (InitialUnitMeasure.TypeName == "mm" && resultConverUnitMeasure == "dm") ConvertedUnitMeasure = new Decimetre(10 / InitialUnitMeasure.Value);
 
             if (InitialUnitMeasure.TypeName == "mm" && resultConverUnitMeasure == "m") ConvertedUnitMeasure = new Metre(100 / InitialUnitMeasure.Value);
 
@@ -59,6 +59,26 @@ namespace TechnicalCalculator.BL.Controller
             if (InitialUnitMeasure.TypeName == "dm" && resultConverUnitMeasure == "cm") ConvertedUnitMeasure = new Centimetre(10 * InitialUnitMeasure.Value);
 
             if (InitialUnitMeasure.TypeName == "dm" && resultConverUnitMeasure == "m") ConvertedUnitMeasure = new Metre(1 / InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "dm" && resultConverUnitMeasure == "m") ConvertedUnitMeasure = new Metre(10000 / InitialUnitMeasure.Value);
+
+
+            if (InitialUnitMeasure.TypeName == "m" && resultConverUnitMeasure == "mm") ConvertedUnitMeasure = new Millimetre(1000 * InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "m" && resultConverUnitMeasure == "cm") ConvertedUnitMeasure = new Centimetre(100 * InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "m" && resultConverUnitMeasure == "dm") ConvertedUnitMeasure = new Decimetre(10 * InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "m" && resultConverUnitMeasure == "km") ConvertedUnitMeasure = new Kilometre(1000 / InitialUnitMeasure.Value);
+
+
+            if (InitialUnitMeasure.TypeName == "km" && resultConverUnitMeasure == "mm") ConvertedUnitMeasure = new Millimetre(1000000 * InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "km" && resultConverUnitMeasure == "cm") ConvertedUnitMeasure = new Centimetre(100000 * InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "km" && resultConverUnitMeasure == "dm") ConvertedUnitMeasure = new Decimetre(10000 * InitialUnitMeasure.Value);
+
+            if (InitialUnitMeasure.TypeName == "km" && resultConverUnitMeasure == "m") ConvertedUnitMeasure = new Metre(1000 * InitialUnitMeasure.Value);
         }
     }
 }
