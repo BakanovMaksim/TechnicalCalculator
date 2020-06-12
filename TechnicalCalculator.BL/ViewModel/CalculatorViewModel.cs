@@ -3,7 +3,7 @@ using TechnicalCalculator.BL.Model;
 
 namespace TechnicalCalculator.BL.Controller
 {
-    public class CalculatorController
+    public class CalculatorViewModelcs
     {
         #region Свойства
         /// <summary>
@@ -22,7 +22,7 @@ namespace TechnicalCalculator.BL.Controller
         public Number ResultNumber { get; private set; }
         #endregion
 
-        public CalculatorController()
+        public CalculatorViewModelcs()
         {
             Operations = new Operation();
         }

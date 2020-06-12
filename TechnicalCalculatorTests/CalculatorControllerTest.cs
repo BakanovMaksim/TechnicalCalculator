@@ -13,7 +13,7 @@ namespace TechnicalCalculatorTests
         {
             //Arrange
             var operands = new Operands(new Number(6), new Number(4));
-            var calculatoController = new CalculatorController();
+            var calculatoController = new CalculatorViewModelcs();
 
             //Act
             calculatoController.SelectedOperation("+", operands);

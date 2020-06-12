@@ -10,13 +10,13 @@ namespace TechnicalCalculator.UI
 {
     public partial class MainWindow : Window
     {
-        private CalculatorController CalculatorController { get; set; }
+        private CalculatorViewModelcs CalculatorController { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            CalculatorController = new CalculatorController();
+            CalculatorController = new CalculatorViewModelcs();
         }
 
         /// <summary>
@@ -53,13 +53,13 @@ namespace TechnicalCalculator.UI
 
             if (ParseString(itemsOperation) == "!")
             {
-                var firstNumber = new Number(double.Parse(ParseString(itemsFirstNumber)));
-                CalculatorController.SelectedOperation(ParseString(itemsOperation), new Operands(firstNumber, new Number(0)));
+                var firstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
+                CalculatorController.SelectedOperation(ParseString(itemsOperation), new Operands(firstNumber, new Number() { Value = 0 }));
             }
             else
             {
-                var firstNumber = new Number(double.Parse(ParseString(itemsFirstNumber)));
-                var secondNumber = new Number(double.Parse(ParseString(itemsSecondNumber)));
+                var firstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
+                var secondNumber = new Number() { Value = double.Parse(ParseString(itemsSecondNumber)) };
                 var operands = new Operands(firstNumber, secondNumber);
 
                 CalculatorController.SelectedOperation(ParseString(itemsOperation), operands);
