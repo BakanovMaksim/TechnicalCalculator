@@ -10,13 +10,13 @@ namespace TechnicalCalculator.UI
 {
     public partial class MainWindow : Window
     {
-        private CalculatorViewModelcs CalculatorController { get; set; }
+        private CalculatorViewModel CalculatorController { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            CalculatorController = new CalculatorViewModelcs();
+            CalculatorController = new CalculatorViewModel();
         }
 
         /// <summary>

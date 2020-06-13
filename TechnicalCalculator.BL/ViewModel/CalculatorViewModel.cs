@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using TechnicalCalculator.BL.Model;
 
 namespace TechnicalCalculator.BL.Controller
 {
-    public class CalculatorViewModelcs
+    public class CalculatorViewModel : INotifyPropertyChanged
     {
         #region Свойства
         /// <summary>
@@ -16,15 +18,25 @@ namespace TechnicalCalculator.BL.Controller
         /// </summary>
         public Operation Operations { get; }
 
+        private Number _resultNumber;
         /// <summary>
         /// Результат.
         /// </summary>
-        public Number ResultNumber { get; private set; }
+        public Number ResultNumber
+        {
+            get => _resultNumber;
+            set
+            {
+                _resultNumber = value;
+                OnPropertyChanged(nameof(ResultNumber));
+            }
+        }
         #endregion
 
-        public CalculatorViewModelcs()
+        public CalculatorViewModel()
         {
             Operations = new Operation();
+            ResultNumber = new Number() { Value = 5 };
         }
 
         /// <summary>
@@ -67,5 +79,10 @@ namespace TechnicalCalculator.BL.Controller
                     break;
             }
         }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+
     }
 }

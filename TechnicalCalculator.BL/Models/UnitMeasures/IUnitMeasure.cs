@@ -7,7 +7,7 @@ namespace TechnicalCalculator.BL.Models.UnitMeasures
     /// <summary>
     /// Единица измерения.
     /// </summary>
-    public class UnitMeasure : INotifyPropertyChanged
+    public partial class UnitMeasure : INotifyPropertyChanged,IDataErrorInfo
     {
         private double _value;
         /// <summary>
