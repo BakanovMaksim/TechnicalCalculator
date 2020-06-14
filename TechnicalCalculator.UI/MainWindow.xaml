@@ -62,7 +62,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="textBlockResult" Grid.Row="1" Text="0" Style="{StaticResource textBlockResultStyle}" Grid.Column="5"/>
+                <TextBlock x:Name="textBlockResult" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="6" Text="0" Style="{StaticResource textBlockResultStyle}"/>
 
                 <Label Grid.Row="2" Grid.Column="3" Content="Memory" Foreground="White" FontSize="20" HorizontalAlignment="Center" Width="84"/>
                 <TextBlock x:Name="textBlockMemory" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource textBlockMemoryStyle}"/>
@@ -74,7 +74,8 @@
                 <Button x:Name="buttonEnterMemory" Grid.Row="3" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}" Click="buttonEnterMemory_Click"/>
                 <Button x:Name="buttonClearMemory" Grid.Row="3" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}" Click="buttonClearMemory_Click"/>
 
-                <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource textBlockMemoryStyle}"/>
+                <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding ResultNumber.Value,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                           Style="{StaticResource textBlockMemoryStyle}"/>
 
                 <Button Grid.Row="4" Grid.Column="2" Grid.RowSpan="2" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
                 <Button Grid.Row="4" Grid.Column="3" Grid.RowSpan="2" Content="8" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>

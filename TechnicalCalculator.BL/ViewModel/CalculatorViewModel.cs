@@ -31,12 +31,22 @@ namespace TechnicalCalculator.BL.Controller
                 OnPropertyChanged(nameof(ResultNumber));
             }
         }
+
+        private Number _memoryNumber;
+        public Number MemoryNumber
+        {
+            get => _memoryNumber;
+            set
+            {
+                _memoryNumber = value;
+                OnPropertyChanged(nameof(MemoryNumber));
+            }
+        }
         #endregion
 
         public CalculatorViewModel()
         {
-            Operations = new Operation();
-            ResultNumber = new Number() { Value = 5 };
+            Operations = new Operation();     
         }
 
         /// <summary>

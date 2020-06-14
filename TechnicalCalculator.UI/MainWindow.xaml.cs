@@ -17,6 +17,7 @@ namespace TechnicalCalculator.UI
             InitializeComponent();
 
             CalculatorController = new CalculatorViewModel();
+            DataContext = new CalculatorViewModel();
         }
 
         /// <summary>
