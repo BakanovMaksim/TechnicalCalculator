@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using TechnicalCalculator.BL.Controller;
 using TechnicalCalculator.BL.Model;
+using TechnicalCalculator.BL.ViewModel;
 
 namespace TechnicalCalculator.UI
 {
     public partial class MainWindow : Window
     {
-        private CalculatorViewModel CalculatorController { get; set; }
+        private CalculatorViewModel CalculatorViewModel { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            CalculatorController = new CalculatorViewModel();
-            DataContext = new CalculatorViewModel();
+            CalculatorViewModel = new CalculatorViewModel();
+            DataContext = CalculatorViewModel;   
         }
 
         /// <summary>
@@ -55,18 +55,18 @@ namespace TechnicalCalculator.UI
             if (ParseString(itemsOperation) == "!")
             {
                 var firstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
-                CalculatorController.SelectedOperation(ParseString(itemsOperation), new Operands(firstNumber, new Number() { Value = 0 }));
+                //CalculatorViewModel.SelectedOperation(ParseString(itemsOperation), new Operands(firstNumber, new Number() { Value = 0 }));
             }
             else
             {
                 var firstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
                 var secondNumber = new Number() { Value = double.Parse(ParseString(itemsSecondNumber)) };
-                var operands = new Operands(firstNumber, secondNumber);
+                //var operands = new Operands(firstNumber, secondNumber);
 
-                CalculatorController.SelectedOperation(ParseString(itemsOperation), operands);
+                CalculatorViewModel.SelectedOperation(ParseString(itemsOperation), operands);
             }
 
-            textBlockResult.Text = CalculatorController.ResultNumber.Value.ToString();
+            textBlockResult.Text = CalculatorViewModel.Calculator.ResultNumber.Value.ToString();
         }
 
         /// <summary>
@@ -105,11 +105,7 @@ namespace TechnicalCalculator.UI
 
         private void buttonFactorial_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "!";
 
-        private void buttonSaveMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = CalculatorController.ResultNumber.Value.ToString();
-
         private void buttonEnterMemory_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += textBlockMemory.Text;
-
-        private void buttonClearMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = string.Empty;
 
         private void buttonAddMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = (double.Parse(textBlockMemory.Text) + double.Parse(textBlockResult.Text)).ToString();
 

@@ -3,50 +3,31 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TechnicalCalculator.BL.Model;
 
-namespace TechnicalCalculator.BL.Controller
+namespace TechnicalCalculator.BL.ViewModel
 {
     public class CalculatorViewModel : INotifyPropertyChanged
     {
         #region Свойства
         /// <summary>
-        /// Операнды.
-        /// </summary>
-        public Operands Operands { get; private set; }
-
-        /// <summary>
         /// Операции.
         /// </summary>
         public Operation Operations { get; }
 
-        private Number _resultNumber;
-        /// <summary>
-        /// Результат.
-        /// </summary>
-        public Number ResultNumber
+        private Calculator _calculator;
+        public Calculator Calculator
         {
-            get => _resultNumber;
+            get => _calculator;
             set
             {
-                _resultNumber = value;
-                OnPropertyChanged(nameof(ResultNumber));
-            }
-        }
-
-        private Number _memoryNumber;
-        public Number MemoryNumber
-        {
-            get => _memoryNumber;
-            set
-            {
-                _memoryNumber = value;
-                OnPropertyChanged(nameof(MemoryNumber));
+                _calculator = value;
+                OnPropertyChanged(nameof(Calculator));
             }
         }
         #endregion
 
         public CalculatorViewModel()
         {
-            Operations = new Operation();     
+            Operations = new Operation();
         }
 
         /// <summary>
@@ -54,42 +35,51 @@ namespace TechnicalCalculator.BL.Controller
         /// </summary>
         /// <param name="operation"> Операция. </param>
         /// <param name="operands"> Операнды. </param>
-        public void SelectedOperation(string operation, Operands operands)
+        public void SelectedOperation()
         {
-            #region Проверка условий
-            if (string.IsNullOrWhiteSpace(operation)) throw new ArgumentNullException("Операция не может быть пустой.", nameof(operation));
-
-            if (operands == null) throw new ArgumentNullException("Операнды не могут быть пустыми.", nameof(operands));
-            #endregion
-
-            Operands = operands;
-
-            switch (operation)
+            switch (Calculator.OperationIcon)
             {
                 case "+":
-                    ResultNumber = Operations.BinaryOperations.Addition(operands.FirstNumber, operands.SecondNumber);
+                    Calculator.ResultNumber = Operations.BinaryOperations.Addition(Calculator.FirstNumber, Calculator.SecondNumber);
                     break;
                 case "-":
-                    ResultNumber = Operations.BinaryOperations.Subsctraction(operands.FirstNumber, operands.SecondNumber);
+                    Calculator.ResultNumber = Operations.BinaryOperations.Subsctraction(Calculator.FirstNumber, Calculator.SecondNumber);
                     break;
                 case "*":
-                    ResultNumber = Operations.BinaryOperations.Multiplication(operands.FirstNumber, operands.SecondNumber);
+                    Calculator.ResultNumber = Operations.BinaryOperations.Multiplication(Calculator.FirstNumber, Calculator.SecondNumber);
                     break;
                 case "/":
-                    ResultNumber = Operations.BinaryOperations.Division(operands.FirstNumber, operands.SecondNumber);
+                    Calculator.ResultNumber = Operations.BinaryOperations.Division(Calculator.FirstNumber, Calculator.SecondNumber);
                     break;
                 case "%":
-                    ResultNumber = Operations.BinaryOperations.DivisionReaminder(operands.FirstNumber, operands.SecondNumber);
+                    Calculator.ResultNumber = Operations.BinaryOperations.DivisionReaminder(Calculator.FirstNumber, Calculator.SecondNumber);
                     break;
                 case "^":
-                    ResultNumber = Operations.UnaryOperations.Exponentiation(operands.FirstNumber, operands.SecondNumber);
+                    Calculator.ResultNumber = Operations.UnaryOperations.Exponentiation(Calculator.FirstNumber, Calculator.SecondNumber);
                     break;
                 case "!":
-                    ResultNumber = Operations.UnaryOperations.Factorial(operands.FirstNumber);
+                    Calculator.ResultNumber = Operations.UnaryOperations.Factorial(Calculator.FirstNumber);
                     break;
             }
         }
 
+        private RelayCommand _saveMemoryCommand;
+        public RelayCommand SaveMemoryCommand
+        {
+            get => _saveMemoryCommand ?? (_saveMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber = Calculator.ResultNumber; }));
+        }
+
+        private RelayCommand _clearMemoryCommand;
+        public RelayCommand ClearMemoryCommand
+        {
+            get => _clearMemoryCommand ?? (_clearMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber = null; }));
+        }
+
+        private RelayCommand _addMemoryCommand;
+        public RelayCommand AddMemoryCommand
+        {
+            get => _addMemoryCommand ?? (_addMemoryCommand = new RelayCommand(obj => { Calculator.ResultNumber += Calculator.MemoryNumber; }));
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));

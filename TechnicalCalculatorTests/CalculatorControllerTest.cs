@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using TechnicalCalculator.BL.Model;
-using TechnicalCalculator.BL.Controller;
+using TechnicalCalculator.BL.ViewModel;
 
 namespace TechnicalCalculatorTests
 {
@@ -12,8 +12,8 @@ namespace TechnicalCalculatorTests
         public void SelectedOperation_InputArgument_SelectingOperation()
         {
             //Arrange
-            var operands = new Operands(new Number(6), new Number(4));
-            var calculatoController = new CalculatorViewModelcs();
+            var operands = new Operands(new Number() { Value=6}, new Number() { Value=4});
+            var calculatoController = new CalculatorViewModel();
 
             //Act
             calculatoController.SelectedOperation("+", operands);

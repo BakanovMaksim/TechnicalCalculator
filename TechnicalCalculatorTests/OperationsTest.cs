@@ -13,8 +13,8 @@ namespace TechnicalCalculatorTests
         {
             //Arrange
             var operations = new Operation();
-            var firstNumber = new Number(9);
-            var secondNumber = new Number(4);
+            var firstNumber = new Number() { Value = 4 };
+            var secondNumber = new Number() { Value = 4 };
 
             //Act
             var resultAddition = operations.BinaryOperations.Addition(firstNumber, secondNumber);
@@ -36,8 +36,8 @@ namespace TechnicalCalculatorTests
         {
             //Arrange
             var operations = new Operation();
-            var firstNumber = new Number(5);
-            var secondNumber = new Number(3);
+            var firstNumber = new Number() { Value = 5 };
+            var secondNumber = new Number() { Value = 3 };
 
             //Act
             var resultExponentiation = operations.UnaryOperations.Exponentiation(firstNumber, secondNumber);
