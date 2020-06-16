@@ -68,12 +68,12 @@ namespace TechnicalCalculator.BL.ViewModel
 
         private void CompletionData()
         {
-            var itemsFirstNumber = Calculator.Expression.TakeWhile(p => char.IsDigit(p));
-            var itemsSecondNumber = Calculator.Expression.SkipWhile(p => char.IsDigit(p) || p == '.').SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p) || p == '.');
             var itemsOperation = Calculator.Expression.SkipWhile(p => char.IsDigit(p) || p == '.').TakeWhile(p => !char.IsDigit(p));
+            var itemsFirstNumber = Calculator.Expression.TakeWhile(p => char.IsDigit(p) || p == '.');
+            var itemsSecondNumber = Calculator.Expression.SkipWhile(p => char.IsDigit(p) || p == '.').SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p) || p == '.');
 
             Calculator.FirstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
-            Calculator.SecondNumber = new Number() { Value = double.Parse(ParseString(itemsSecondNumber)) };
+            if(itemsSecondNumber.Count() > 0) Calculator.SecondNumber = new Number() { Value = double.Parse(ParseString(itemsSecondNumber)) };
             Calculator.OperationIcon = ParseString(itemsOperation);
 
             SelectedOperation();
@@ -95,10 +95,10 @@ namespace TechnicalCalculator.BL.ViewModel
             get => _resultCommand ?? (_resultCommand = new RelayCommand(obj => { CompletionData(); }));
         }
 
-        private RelayCommand _saveCommand;
-        public RelayCommand SaveCommand
+        private RelayCommand _clearCommand;
+        public RelayCommand ClearCommand
         {
-            get => _saveCommand ?? (_saveCommand = new RelayCommand(obj => { Calculator.Expression = "0"; }));
+            get => _clearCommand ?? (_clearCommand = new RelayCommand(obj => { Calculator.Expression = "0"; }));
         }
 
         private RelayCommand _saveMemoryCommand;
