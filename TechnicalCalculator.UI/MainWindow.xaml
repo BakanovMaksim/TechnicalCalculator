@@ -67,23 +67,27 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="textBlockResult" Grid.Row="1" Grid.ColumnSpan="6" Text="0" Style="{StaticResource textBlockResultStyle}"/>
+                <TextBlock x:Name="textBlockResult" Grid.Row="1" Grid.ColumnSpan="6" Text="{Binding Path=Calculator.Expression,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                           Style="{StaticResource textBlockResultStyle}"/>
 
                 <Label Grid.Row="2" Grid.Column="3" Content="Memory"/>
-                <TextBlock x:Name="textBlockMemory" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Text="{Binding Path=MemoryNumber.Value,UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock x:Name="textBlockMemory" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Text="{Binding Path=Calculator.MemoryNumber.Value,UpdateSourceTrigger=PropertyChanged}" 
                            Style="{StaticResource textBlockMemoryStyle}"/>
 
                 <Button Grid.Row="3" Grid.Column="5" Content="C" Click="buttonClear_Click" Background="{StaticResource buttonControl}"/>
-                <Button x:Name="buttonAddMemory" Grid.Row="4" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}" Click="buttonAddMemory_Click"/>
-                <Button x:Name="buttonSubMemory" Grid.Row="6" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}" Click="buttonSubMemory_Click"/>
+                <Button x:Name="buttonAddMemory" Grid.Row="4" Grid.Column="5" Grid.RowSpan="2" Content="M+" Background="{StaticResource buttonControl}"
+                        Command="{Binding AddMemoryCommand}"/>
+                <Button x:Name="buttonSubMemory" Grid.Row="6" Grid.Column="5" Grid.RowSpan="2" Content="M-" Background="{StaticResource buttonControl}"
+                        Command="{Binding SubMemoryCommand}"/>
                 <Button x:Name="buttonSaveMemory" Grid.Row="3" Grid.Column="2" Content="MS" Background="{StaticResource buttonControl}"
                         Command="{Binding SaveMemoryCommand}"/>
-                <Button x:Name="buttonEnterMemory" Grid.Row="3" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}" Click="buttonEnterMemory_Click"/>
+                <Button x:Name="buttonEnterMemory" Grid.Row="3" Grid.Column="3" Content="MR" Background="{StaticResource buttonControl}"
+                        Command="{Binding EnterMemoryCommand}"/>
                 <Button x:Name="buttonClearMemory" Grid.Row="3" Grid.Column="4" Content="MC" Background="{StaticResource buttonControl}"
                         Command="{Binding ClearMemoryCommand}"/>
 
                 <Label Grid.Row="2" Grid.ColumnSpan="2" Content="Previous result"/>
-                <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding ResultNumber.Value,UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Calculator.ResultNumber.Value,UpdateSourceTrigger=PropertyChanged}" 
                            Style="{StaticResource textBlockMemoryStyle}"/>
 
                 <Button Grid.Row="4" Grid.Column="2" Grid.RowSpan="2" Content="7" Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
@@ -100,17 +104,18 @@
 
                 <Button Grid.Row="10" Grid.Column="4" Grid.RowSpan="2" Content="." Click="buttonNumber_Click" Background="{StaticResource buttonDigit}"/>
 
-                <Button Grid.Row="10" Grid.RowSpan="2" Content="%" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
-                <Button Grid.Row="8" Grid.RowSpan="2" Content="/" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
-                <Button Grid.Row="8" Grid.Column="0" Grid.RowSpan="2" Content="*" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
-                <Button Grid.Row="6" Grid.RowSpan="2" Content="-" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
-                <Button Grid.Row="6" Grid.Column="0" Grid.RowSpan="2" Content="+" Click="buttonOperation_Click" Background="{StaticResource buttonOperation}"/>
+                <Button Grid.Row="10" Grid.RowSpan="2" Content="%" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
+                <Button Grid.Row="8" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
+                <Button Grid.Row="8" Grid.RowSpan="2" Content="*" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
+                <Button Grid.Row="6" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
+                <Button Grid.Row="6" Grid.RowSpan="2" Content="+" Click="buttonNumber_Click" Background="{StaticResource buttonOperation}"/>
 
-                <Button Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Content="+/-" Background="{StaticResource buttonOperation}"/>
+                <Button Grid.Row="4" Grid.RowSpan="2" Content="+/-" Background="{StaticResource buttonOperation}"/>
                 <Button Grid.Row="4" Grid.RowSpan="2" Content="xⁿ" Click="buttonExponentiation_Click" Background="{StaticResource buttonOperation}" Grid.Column="1"/>
-                <Button Grid.Row="10" Grid.Column="0" Grid.RowSpan="2" Content="X!" Click="buttonFactorial_Click" Background="{StaticResource buttonOperation}"/>
+                <Button Grid.Row="10" Grid.RowSpan="2" Content="X!" Click="buttonFactorial_Click" Background="{StaticResource buttonOperation}"/>
 
-                <Button x:Name="buttonEnter" Grid.Row="8" Grid.Column="5" Grid.RowSpan="4" Content="=" Click="buttonEnter_Click" Background="{StaticResource buttonEnt}"/>
+                <Button x:Name="buttonEnter" Grid.Row="8" Grid.Column="5" Grid.RowSpan="4" Content="=" Command="{Binding ResultCommand}"
+                        Background="{StaticResource buttonEnt}"/>
             </Grid>
         </TabItem>
 

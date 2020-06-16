@@ -10,7 +10,7 @@ namespace TechnicalCalculator.UI
 {
     public partial class MainWindow : Window
     {
-        private CalculatorViewModel CalculatorViewModel { get; set; }
+        public CalculatorViewModel CalculatorViewModel { get; set; }
 
         public MainWindow()
         {
@@ -20,12 +20,12 @@ namespace TechnicalCalculator.UI
             DataContext = CalculatorViewModel;   
         }
 
-        /// <summary>
-        /// Запись на экран чисел и бинарных операций.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonNumber_Click(object sender, RoutedEventArgs e) => ShowButtonContent(e);
+        private void buttonNumber_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBlockResult.Text.Length == 1 && textBlockResult.Text == "0") textBlockResult.Text = string.Empty;
+
+            textBlockResult.Text += ((Button)e.OriginalSource).Content.ToString();
+        }
 
         private void buttonOperation_Click(object sender, RoutedEventArgs e)
         {
@@ -33,82 +33,14 @@ namespace TechnicalCalculator.UI
 
             if (itemsOperation.Count() == 1)
             {
-                CompletionData();
+                //CompletionData();
             }
 
-            ShowButtonContent(e);
+            //ShowButtonContent(e);
         }
-
-        /// <summary>
-        /// Получение первого,второго операнда и операции и вывод результата на экран.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonEnter_Click(object sender, RoutedEventArgs e) => CompletionData();
-
-        private void CompletionData()
-        {
-            var itemsFirstNumber = textBlockResult.Text.TakeWhile(p => char.IsDigit(p));
-            var itemsSecondNumber = textBlockResult.Text.SkipWhile(p => char.IsDigit(p) || p == '.').SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p) || p == '.');
-            var itemsOperation = textBlockResult.Text.SkipWhile(p => char.IsDigit(p) || p == '.').TakeWhile(p => !char.IsDigit(p));
-
-            if (ParseString(itemsOperation) == "!")
-            {
-                var firstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
-                //CalculatorViewModel.SelectedOperation(ParseString(itemsOperation), new Operands(firstNumber, new Number() { Value = 0 }));
-            }
-            else
-            {
-                var firstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
-                var secondNumber = new Number() { Value = double.Parse(ParseString(itemsSecondNumber)) };
-                //var operands = new Operands(firstNumber, secondNumber);
-
-                CalculatorViewModel.SelectedOperation(ParseString(itemsOperation), operands);
-            }
-
-            textBlockResult.Text = CalculatorViewModel.Calculator.ResultNumber.Value.ToString();
-        }
-
-        /// <summary>
-        /// Отображение контента кнопки на экран.
-        /// </summary>
-        private void ShowButtonContent(RoutedEventArgs e)
-        {
-            if (textBlockResult.Text.Length == 1 && textBlockResult.Text == "0") textBlockResult.Text = string.Empty;
-
-            textBlockResult.Text += ((Button)e.OriginalSource).Content.ToString();
-        }
-
-        /// <summary>
-        /// Парсинг в string отложенных данных из linq.
-        /// </summary>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        private string ParseString(IEnumerable<char> items)
-        {
-            var str = "";
-
-            foreach (var item in items)
-                str += item;
-
-            return str;
-        }
-
-        /// <summary>
-        /// Очистка поля.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonClear_Click(object sender, RoutedEventArgs e) => textBlockResult.Text = 0.ToString();
 
         private void buttonExponentiation_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "^";
 
         private void buttonFactorial_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += "!";
-
-        private void buttonEnterMemory_Click(object sender, RoutedEventArgs e) => textBlockResult.Text += textBlockMemory.Text;
-
-        private void buttonAddMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = (double.Parse(textBlockMemory.Text) + double.Parse(textBlockResult.Text)).ToString();
-
-        private void buttonSubMemory_Click(object sender, RoutedEventArgs e) => textBlockMemory.Text = (double.Parse(textBlockMemory.Text) - double.Parse(textBlockResult.Text)).ToString();
     }
 }
