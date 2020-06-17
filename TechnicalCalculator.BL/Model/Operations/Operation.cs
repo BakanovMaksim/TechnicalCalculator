@@ -13,6 +13,9 @@ namespace TechnicalCalculator.BL.Model
         /// </summary>
         public BinaryOperations BinaryOperations { get; }
 
+        /// <summary>
+        /// Унарные операции.
+        /// </summary>
         public UnaryOperations UnaryOperations { get; }
 
         public Operation()

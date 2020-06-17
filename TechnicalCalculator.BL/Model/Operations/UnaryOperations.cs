@@ -20,6 +20,6 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// </summary>
         /// <param name="number"> Число. </param>
         /// <returns> Результат вычисления факториала. </returns>  
-        public Number Factorial(Number number) => !number;                      //TODO: Переделать в контроллере,чтобы принимался один аргумент, а не два.
+        public Number Factorial(Number number) => !number;
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using TechnicalCalculator.BL.Model;
 
 namespace TechnicalCalculator.BL.ViewModel
 {
-    public class CalculatorViewModel : INotifyPropertyChanged
+    /// <summary>
+    /// Логика калькулятора.
+    /// </summary>
+    public class CalculatorViewModel
     {
         #region Свойства
         /// <summary>
@@ -15,16 +16,10 @@ namespace TechnicalCalculator.BL.ViewModel
         /// </summary>
         public Operation Operations { get; }
 
-        private Calculator _calculator;
-        public Calculator Calculator
-        {
-            get => _calculator;
-            set
-            {
-                _calculator = value;
-                OnPropertyChanged(nameof(Calculator));
-            }
-        }
+        /// <summary>
+        /// Калькулятор.
+        /// </summary>
+        public Calculator Calculator { get; }
         #endregion
 
         public CalculatorViewModel()
@@ -66,6 +61,9 @@ namespace TechnicalCalculator.BL.ViewModel
             Calculator.Expression = Calculator.ResultNumber?.Value.ToString();
         }
 
+        /// <summary>
+        /// Сбор данных из выражения.
+        /// </summary>
         private void CompletionData()
         {
             var itemsOperation = Calculator.Expression.SkipWhile(p => char.IsDigit(p) || p == '.').TakeWhile(p => !char.IsDigit(p));
@@ -89,50 +87,67 @@ namespace TechnicalCalculator.BL.ViewModel
             return str;
         }
 
+        /// <summary>
+        /// Команда вывода результата.
+        /// </summary>
         private RelayCommand _resultCommand;
         public RelayCommand ResultCommand
         {
             get => _resultCommand ?? (_resultCommand = new RelayCommand(obj => { CompletionData(); }));
         }
 
+        /// <summary>
+        /// Команда очистки выражения.
+        /// </summary>
         private RelayCommand _clearCommand;
         public RelayCommand ClearCommand
         {
             get => _clearCommand ?? (_clearCommand = new RelayCommand(obj => { Calculator.Expression = "0"; }));
         }
 
+        /// <summary>
+        /// Команда сохранения результата в памяти.
+        /// </summary>
         private RelayCommand _saveMemoryCommand;
         public RelayCommand SaveMemoryCommand
         {
             get => _saveMemoryCommand ?? (_saveMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber = Calculator.ResultNumber; }));
         }
 
+        /// <summary>
+        /// Команда вывода числа в памяти на экран.
+        /// </summary>
         private RelayCommand _enterMemoryCommand;
         public RelayCommand EnterMemoryCommand
         {
             get => _enterMemoryCommand ?? (_enterMemoryCommand = new RelayCommand(obj => { Calculator.Expression += Calculator.MemoryNumber.Value.ToString(); }));
         }
 
+        /// <summary>
+        /// Команда очистки числа в памяти.
+        /// </summary>
         private RelayCommand _clearMemoryCommand;
         public RelayCommand ClearMemoryCommand
         {
             get => _clearMemoryCommand ?? (_clearMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber = null; }));
         }
 
+        /// <summary>
+        /// Команда сложения числа в памяти с результатом.
+        /// </summary>
         private RelayCommand _addMemoryCommand;
         public RelayCommand AddMemoryCommand
         {
             get => _addMemoryCommand ?? (_addMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber += Calculator.ResultNumber; }));
         }
 
+        /// <summary>
+        /// Команда вычитания числа в памяти с результатом.
+        /// </summary>
         private RelayCommand _subMemoryCommand;
         public RelayCommand SubMemoryCommand
         {
             get => _subMemoryCommand ?? (_subMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber -= Calculator.ResultNumber; }));
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-
     }
 }

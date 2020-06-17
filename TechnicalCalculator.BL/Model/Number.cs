@@ -5,14 +5,14 @@ using System.Runtime.CompilerServices;
 namespace TechnicalCalculator.BL.Model
 {
     /// <summary>
-    /// Абстрактный класс для числа.
+    /// Базовый класс для числа.
     /// </summary>
     public class Number : INotifyPropertyChanged
     {
-        private string _type;
         /// <summary>
         /// Тип числа.
         /// </summary>
+        private string _type;
         public string Type
         {
             get => _type;
@@ -23,10 +23,10 @@ namespace TechnicalCalculator.BL.Model
             }
         }
 
-        private double _value;
         /// <summary>
         /// Значение числа.
         /// </summary>
+        private double _value;
         public double Value
         {
             get => _value;
@@ -34,20 +34,6 @@ namespace TechnicalCalculator.BL.Model
             {
                 _value = value;
                 OnPropertyChanged(nameof(Value));
-            }
-        }
-
-        private string _numberSystem;
-        /// <summary>
-        /// Система счисления числа.
-        /// </summary>
-        public string NumberSystem
-        {
-            get => _numberSystem;
-            set
-            {
-                _numberSystem = value;
-                OnPropertyChanged(nameof(NumberSystem));
             }
         }
 

@@ -14,7 +14,7 @@ namespace TechnicalCalculator.UI
             InitializeComponent();
 
             CalculatorViewModel = new CalculatorViewModel();
-            DataContext = CalculatorViewModel;   
+            DataContext = CalculatorViewModel;
         }
 
         private void buttonNumber_Click(object sender, RoutedEventArgs e)
