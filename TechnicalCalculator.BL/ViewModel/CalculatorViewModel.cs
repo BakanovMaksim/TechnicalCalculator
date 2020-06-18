@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
 using TechnicalCalculator.BL.Model;
 
 namespace TechnicalCalculator.BL.ViewModel
@@ -12,11 +10,6 @@ namespace TechnicalCalculator.BL.ViewModel
     {
         #region Свойства
         /// <summary>
-        /// Операции.
-        /// </summary>
-        public Operation Operations { get; }
-
-        /// <summary>
         /// Калькулятор.
         /// </summary>
         public Calculator Calculator { get; }
@@ -24,67 +17,19 @@ namespace TechnicalCalculator.BL.ViewModel
 
         public CalculatorViewModel()
         {
-            Operations = new Operation();
             Calculator = new Calculator();
         }
 
         /// <summary>
-        /// Выбор и выполнение операции.
-        /// </summary>
-        public void SelectedOperation()
-        {
-            switch (Calculator.OperationIcon)
-            {
-                case "+":
-                    Calculator.ResultNumber = Operations.BinaryOperations.Addition(Calculator.FirstNumber, Calculator.SecondNumber);
-                    break;
-                case "-":
-                    Calculator.ResultNumber = Operations.BinaryOperations.Subsctraction(Calculator.FirstNumber, Calculator.SecondNumber);
-                    break;
-                case "*":
-                    Calculator.ResultNumber = Operations.BinaryOperations.Multiplication(Calculator.FirstNumber, Calculator.SecondNumber);
-                    break;
-                case "/":
-                    Calculator.ResultNumber = Operations.BinaryOperations.Division(Calculator.FirstNumber, Calculator.SecondNumber);
-                    break;
-                case "%":
-                    Calculator.ResultNumber = Operations.BinaryOperations.DivisionReaminder(Calculator.FirstNumber, Calculator.SecondNumber);
-                    break;
-                case "^":
-                    Calculator.ResultNumber = Operations.UnaryOperations.Exponentiation(Calculator.FirstNumber, Calculator.SecondNumber);
-                    break;
-                case "!":
-                    Calculator.ResultNumber = Operations.UnaryOperations.Factorial(Calculator.FirstNumber);
-                    break;
-            }
-
-            Calculator.Expression = Calculator.ResultNumber?.Value.ToString();
-        }
-
-        /// <summary>
-        /// Сбор данных из выражения.
+        /// Сбор данных и вычисление выражения.
         /// </summary>
         private void CompletionData()
         {
-            var itemsOperation = Calculator.Expression.SkipWhile(p => char.IsDigit(p) || p == '.').TakeWhile(p => !char.IsDigit(p));
-            var itemsFirstNumber = Calculator.Expression.TakeWhile(p => char.IsDigit(p) || p == '.');
-            var itemsSecondNumber = Calculator.Expression.SkipWhile(p => char.IsDigit(p) || p == '.').SkipWhile(p => !char.IsDigit(p)).TakeWhile(p => char.IsDigit(p) || p == '.');
+            Calculator.ReverseExpression = ReversePolishNotation.GetExpression(Calculator.Expression);
 
-            Calculator.FirstNumber = new Number() { Value = double.Parse(ParseString(itemsFirstNumber)) };
-            if(itemsSecondNumber.Count() > 0) Calculator.SecondNumber = new Number() { Value = double.Parse(ParseString(itemsSecondNumber)) };
-            Calculator.OperationIcon = ParseString(itemsOperation);
+            Calculator.ResultNumber = ReversePolishNotation.Counting(Calculator.ReverseExpression,Calculator.FirstNumber,Calculator.SecondNumber);
 
-            SelectedOperation();
-        }
-
-        private string ParseString(IEnumerable<char> items)
-        {
-            var str = "";
-
-            foreach (var item in items)
-                str += item;
-
-            return str;
+            Calculator.Expression = Calculator.ResultNumber?.Value.ToString();
         }
 
         /// <summary>

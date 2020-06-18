@@ -13,13 +13,13 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Число </param>
         /// <param name="secondNumber"> Степень. </param>
         /// <returns> Результат возведения в степень. </returns>
-        public Number Exponentiation(Number firstNumber, Number secondNumber) => firstNumber ^ secondNumber;
+        public static Number Exponentiation(Number firstNumber, Number secondNumber) => firstNumber ^ secondNumber;
 
         /// <summary>
         /// Факториал числа.
         /// </summary>
         /// <param name="number"> Число. </param>
         /// <returns> Результат вычисления факториала. </returns>  
-        public Number Factorial(Number number) => !number;
+        public static Number Factorial(Number number) => !number;
     }
 }

@@ -13,7 +13,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд </param>
         /// <param name="secondNumber"> Второй операнд </param>
         /// <returns> Результат сложения. </returns>
-        public Number Addition(Number firstNumber, Number secondNumber) => firstNumber + secondNumber;
+        public static Number Addition(Number firstNumber, Number secondNumber) => firstNumber + secondNumber;
 
         /// <summary>
         /// Операция вычитания.
@@ -21,7 +21,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат вычитания. </returns>
-        public Number Subsctraction(Number firstNumber, Number secondNumber) => firstNumber - secondNumber;
+        public static Number Subsctraction(Number firstNumber, Number secondNumber) => firstNumber - secondNumber;
 
         /// <summary>
         /// Операция умножения.
@@ -29,7 +29,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат умножения. </returns>
-        public Number Multiplication(Number firstNumber, Number secondNumber) => firstNumber * secondNumber;
+        public static Number Multiplication(Number firstNumber, Number secondNumber) => firstNumber * secondNumber;
 
         /// <summary>
         /// Операция деления.
@@ -37,7 +37,7 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат деления. </returns>
-        public Number Division(Number firstNumber, Number secondNumber) => firstNumber / secondNumber;
+        public static Number Division(Number firstNumber, Number secondNumber) => firstNumber / secondNumber;
 
         /// <summary>
         /// Операция деления с остатком.
@@ -45,6 +45,6 @@ namespace TechnicalCalculator.BL.Model.Operations
         /// <param name="firstNumber"> Первый операнд. </param>
         /// <param name="secondNumber"> Второй операнд. </param>
         /// <returns> Результат деления с остатком. </returns>
-        public Number DivisionReaminder(Number firstNumber, Number secondNumber) => firstNumber % secondNumber;
+        public static Number DivisionReaminder(Number firstNumber, Number secondNumber) => firstNumber % secondNumber;
     }
 }
