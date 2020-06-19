@@ -21,23 +21,19 @@
             <Setter Property="VerticalAlignment" Value="Bottom"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="textBlockMemoryStyle">
+            <Setter Property="Margin" Value="5"/>
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="#0e2139"/>
         </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="Width" Value="150"/>
-        </Style>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Margin" Value="4"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Background" Value="Black"/>
             <Setter Property="BorderThickness" Value="3.5"/>
-
         </Style>
         <SolidColorBrush x:Key="buttonControl" Color="#0e2139"/>
         <SolidColorBrush x:Key="buttonDigit" Color="#072c63"/>
@@ -45,7 +41,7 @@
         <SolidColorBrush x:Key="buttonOperation" Color="#0e214f"/>
     </Window.Resources>
 
-            <Grid Background="Black">
+        <Grid Background="Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24"/>
                     <RowDefinition Height="83*"/>
@@ -73,7 +69,7 @@
                            Style="{StaticResource textBlockResultStyle}"/>
 
                 <Label Grid.Row="2" Grid.Column="3" Content="Memory"/>
-                <TextBlock Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Text="{Binding Path=Calculator.MemoryNumber.Value,UpdateSourceTrigger=PropertyChanged}" 
+                <TextBlock Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Text="{Binding Path=Calculator.MemoryNumber.Value,UpdateSourceTrigger=PropertyChanged}"
                            Style="{StaticResource textBlockMemoryStyle}"/>
 
                 <Button Grid.Row="3" Grid.Column="5" Content="C" BorderBrush="{StaticResource buttonControl}"
@@ -108,15 +104,15 @@
                 <Button Grid.Row="10" Grid.Column="4" Grid.RowSpan="2" Content="." Click="buttonNumber_Click" BorderBrush="{StaticResource buttonDigit}"/>
 
                 <Button Grid.Row="10" Grid.Column="1" Grid.RowSpan="2" Content="%" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}"/>
-                <Button Grid.Row="8" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}" Grid.Column="1"/>
+                <Button Grid.Row="8" Grid.Column="1" Grid.RowSpan="2" Content="/" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}"/>
                 <Button Grid.Row="8" Grid.RowSpan="2" Content="*" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}"/>
-                <Button Grid.Row="6" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}" Grid.Column="1"/>
+                <Button Grid.Row="6" Grid.Column="1" Grid.RowSpan="2" Content="-" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}" />
                 <Button Grid.Row="6" Grid.RowSpan="2" Content="+" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}"/>
 
                 <Button Grid.Row="4" Grid.RowSpan="2" Content="+/-" BorderBrush="{StaticResource buttonOperation}"/>
                 <Button Grid.Row="4" Grid.RowSpan="2" Content="^" Click="buttonNumber_Click" Grid.Column="1" BorderBrush="{StaticResource buttonOperation}"/>
                 <Button Grid.Row="10" Grid.RowSpan="2" Content="!" Click="buttonNumber_Click" BorderBrush="{StaticResource buttonOperation}"/>
 
-                <Button Grid.Row="8" Grid.Column="5" Grid.RowSpan="4" Content="=" Command="{Binding ResultCommand}" BorderBrush="{StaticResource buttonEnt}"/>
+        <Button Grid.Row="8" Grid.Column="5" Grid.RowSpan="4" Content="=" Command="{Binding ResultCommand}" BorderBrush="{StaticResource buttonEnt}"/>
             </Grid>
 </Window>

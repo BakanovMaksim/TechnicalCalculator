@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.VisualBasic.CompilerServices;
 using NUnit.Framework;
 using TechnicalCalculator.BL.Model;
+using TechnicalCalculator.BL.Model.Operations;
 
 namespace TechnicalCalculatorTests
 {
@@ -12,16 +12,15 @@ namespace TechnicalCalculatorTests
         public void BinaryOperation_InputArgument_ReturnedValue()
         {
             //Arrange
-            var operations = new Operation();
-            var firstNumber = new Number() { Value = 4 };
+            var firstNumber = new Number() { Value = 9 };
             var secondNumber = new Number() { Value = 4 };
 
             //Act
-            var resultAddition = operations.BinaryOperations.Addition(firstNumber, secondNumber);
-            var resultSubsctraction = operations.BinaryOperations.Subsctraction(firstNumber, secondNumber);
-            var resultMultiplication = operations.BinaryOperations.Multiplication(firstNumber, secondNumber);
-            var resultDivision = operations.BinaryOperations.Division(firstNumber, secondNumber);
-            var resultDivisionReaminder = operations.BinaryOperations.DivisionReaminder(firstNumber, secondNumber);
+            var resultAddition = BinaryOperations.Addition(firstNumber, secondNumber);
+            var resultSubsctraction = BinaryOperations.Subsctraction(firstNumber, secondNumber);
+            var resultMultiplication = BinaryOperations.Multiplication(firstNumber, secondNumber);
+            var resultDivision = BinaryOperations.Division(firstNumber, secondNumber);
+            var resultDivisionReaminder = BinaryOperations.DivisionReaminder(firstNumber, secondNumber);
 
             //Assert
             Assert.AreEqual(13, resultAddition.Value);
@@ -35,13 +34,12 @@ namespace TechnicalCalculatorTests
         public void UnaryOperation_InputArgument_ReturnedValue()
         {
             //Arrange
-            var operations = new Operation();
             var firstNumber = new Number() { Value = 5 };
             var secondNumber = new Number() { Value = 3 };
 
             //Act
-            var resultExponentiation = operations.UnaryOperations.Exponentiation(firstNumber, secondNumber);
-            var resultFactorial = operations.UnaryOperations.Factorial(firstNumber);
+            var resultExponentiation = UnaryOperations.Exponentiation(firstNumber, secondNumber);
+            var resultFactorial = UnaryOperations.Factorial(firstNumber);
 
             //Assert
             Assert.AreEqual(125, resultExponentiation.Value);

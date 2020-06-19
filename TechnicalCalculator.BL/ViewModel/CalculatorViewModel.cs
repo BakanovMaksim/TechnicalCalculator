@@ -13,6 +13,11 @@ namespace TechnicalCalculator.BL.ViewModel
         /// Калькулятор.
         /// </summary>
         public Calculator Calculator { get; }
+
+        /// <summary>
+        /// Выражение преобразованное в обратную Польскую нотацию.
+        /// </summary>
+        public string ReverseExpression { get; private set; }
         #endregion
 
         public CalculatorViewModel()
@@ -25,13 +30,14 @@ namespace TechnicalCalculator.BL.ViewModel
         /// </summary>
         private void CompletionData()
         {
-            Calculator.ReverseExpression = ReversePolishNotation.GetExpression(Calculator.Expression);
+            ReverseExpression = ReversePolishNotation.GetExpression(Calculator.Expression);
 
-            Calculator.ResultNumber = ReversePolishNotation.Counting(Calculator.ReverseExpression,Calculator.FirstNumber,Calculator.SecondNumber);
+            Calculator.ResultNumber = ReversePolishNotation.Counting(ReverseExpression,Calculator.FirstNumber,Calculator.SecondNumber);
 
             Calculator.Expression = Calculator.ResultNumber?.Value.ToString();
         }
 
+        #region Команды
         /// <summary>
         /// Команда вывода результата.
         /// </summary>
@@ -94,5 +100,6 @@ namespace TechnicalCalculator.BL.ViewModel
         {
             get => _subMemoryCommand ?? (_subMemoryCommand = new RelayCommand(obj => { Calculator.MemoryNumber -= Calculator.ResultNumber; }));
         }
+        #endregion
     }
 }

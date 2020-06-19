@@ -9,6 +9,7 @@ namespace TechnicalCalculator.BL.Model
     /// </summary>
     public class Calculator : INotifyPropertyChanged
     {
+        #region Свойства
         /// <summary>
         /// Первое операнд.
         /// </summary
@@ -62,8 +63,7 @@ namespace TechnicalCalculator.BL.Model
                 OnPropertyChanged(nameof(Expression));
             }
         }
-
-        public string ReverseExpression { get; set; }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));

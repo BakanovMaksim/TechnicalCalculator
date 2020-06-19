@@ -6,10 +6,20 @@ using TechnicalCalculator.BL.Model.Operations;
 
 namespace TechnicalCalculator.BL.ViewModel
 {
+    /// <summary>
+    /// Алгоритм обратной Польской нотации.
+    /// </summary>
     public class ReversePolishNotation
     {
+        /// <summary>
+        /// Преобразование выражения в обратное Польское.
+        /// </summary>
+        /// <param name="inputExpression"> Входное выражение. </param>
+        /// <returns> Выражение обратной Польской нотации. </returns>
         public static string GetExpression(string inputExpression)
         {
+            if (string.IsNullOrWhiteSpace(inputExpression)) throw new ArgumentNullException("Входная строка не может быть пустой.", nameof(inputExpression));
+
             var outputExpression = string.Empty; 
             var operStack = new Stack<char>(); 
 
@@ -63,10 +73,19 @@ namespace TechnicalCalculator.BL.ViewModel
             return outputExpression;
         }
 
+        /// <summary>
+        /// Вычисление преобразованного выражения.
+        /// </summary>
+        /// <param name="inputExpression"> Входное преобразованное выражение. </param>
+        /// <param name="firstNumber"> Первый число. </param>
+        /// <param name="secondNumber"> Второе число. </param>
+        /// <returns> Результат вычисления выражения. </returns>
         public static Number Counting(string inputExpression, Number firstNumber,Number secondNumber)
         {
+            if (string.IsNullOrWhiteSpace(inputExpression)) throw new ArgumentNullException("Входное выражение не может быть пустым.", nameof(inputExpression));
+
             double result = 0;
-            Stack<double> temp = new Stack<double>();
+            var temp = new Stack<double>();
 
             for (int i = 0; i < inputExpression.Length; i++)
             {
@@ -80,6 +99,7 @@ namespace TechnicalCalculator.BL.ViewModel
                         i++;
                         if (i == inputExpression.Length) break;
                     }
+
                     temp.Push(double.Parse(a,CultureInfo.InvariantCulture));
                     i--;
                 }
@@ -102,6 +122,7 @@ namespace TechnicalCalculator.BL.ViewModel
                         case '^': result = UnaryOperations.Exponentiation(secondNumber, firstNumber).Value; break;
                         case '!': result = UnaryOperations.Factorial(firstNumber).Value; break;
                     }
+
                     temp.Push(result); 
                 }
             }
@@ -109,8 +130,15 @@ namespace TechnicalCalculator.BL.ViewModel
             return new Number { Value = temp.Peek() };
         }
 
+        /// <summary>
+        /// Проверка приоритета операции.
+        /// </summary>
+        /// <param name="operation"> Операция. </param>
+        /// <returns> Приоритет операции. </returns>
         private static byte CheckedPriority(char operation)
         {
+            if (char.IsDigit(operation)) throw new ArgumentException("Операция не может быть числом.", nameof(operation));
+
             switch (operation)
             {
                 case '(': return 0;
