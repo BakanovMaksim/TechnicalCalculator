@@ -34,4 +34,4 @@
   <h3>TechnicalCalculatorTests - Unit Test :file_folder:</h3>
   <p>OperationsTest.cs - tests methods for performing operations</p>
   <p>TechnicalCalculatorTests.cs - tests the reverse Polish notation algorithm</p>
-![](TechnicalCalculator.png)
+<img src="TechnicalCalculator.png"/>
