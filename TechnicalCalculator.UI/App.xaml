@@ -3,7 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TechnicalCalculator.UI"
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
-         
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="textBlockResultStyle">
+            <Setter Property="FontSize" Value="55"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="textBlockMemoryStyle">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#0e2139"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderThickness" Value="3.5"/>
+        </Style>
+        <SolidColorBrush x:Key="buttonControl" Color="#0e2139"/>
+        <SolidColorBrush x:Key="buttonDigit" Color="#072c63"/>
+        <SolidColorBrush x:Key="buttonEnt" Color="#162e54"/>
+        <SolidColorBrush x:Key="buttonOperation" Color="#0e214f"/>
     </Application.Resources>
 </Application>

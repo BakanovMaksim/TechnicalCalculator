@@ -44,7 +44,6 @@ namespace TechnicalCalculator.BL.Model
             get => _memoryNumber;
             set
             {
-                if (value == null) throw new ArgumentNullException("Значение не может быть пустым.", nameof(value));
                 _memoryNumber = value;
                 OnPropertyChanged(nameof(MemoryNumber));
             }
