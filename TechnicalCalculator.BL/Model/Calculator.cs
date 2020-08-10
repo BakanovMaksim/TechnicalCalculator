@@ -5,23 +5,23 @@ using System.Runtime.CompilerServices;
 namespace TechnicalCalculator.BL.Model
 {
     /// <summary>
-    /// Калькулятор.
+    /// Calculator.
     /// </summary>
     public class Calculator : INotifyPropertyChanged
     {
         #region Свойства
         /// <summary>
-        /// Первое операнд.
+        /// The first operand.
         /// </summary
         public Number FirstNumber { get; }
 
         /// <summary>
-        /// Второй операнд.
+        /// The second operand.
         /// </summary>
         public Number SecondNumber { get; }
 
         /// <summary>
-        /// Результат.
+        /// Result.
         /// </summary>
         private Number _resultNumber;
         public Number ResultNumber
@@ -29,14 +29,14 @@ namespace TechnicalCalculator.BL.Model
             get => _resultNumber;
             set
             {
-                if (value == null) throw new ArgumentNullException("Значение не может быть пустым.", nameof(value));
+                if (value == null) throw new ArgumentNullException("The value cannot be empty.", nameof(value));
                 _resultNumber = value;
                 OnPropertyChanged(nameof(ResultNumber));
             }
         }
 
         /// <summary>
-        /// Число в памяти.
+        /// Number in memory.
         /// </summary>
         private Number _memoryNumber;
         public Number MemoryNumber
@@ -49,8 +49,8 @@ namespace TechnicalCalculator.BL.Model
             }
         }
 
-        /// <summary>
-        /// Выражение.
+        /// <summary> 
+        /// Expression.
         /// </summary>
         private string _expression = "0";
         public string Expression

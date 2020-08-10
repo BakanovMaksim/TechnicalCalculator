@@ -1,25 +1,23 @@
-﻿using System;
-
-namespace TechnicalCalculator.BL.Model.Operations
+﻿namespace TechnicalCalculator.BL.Model.Operations
 {
     /// <summary>
-    /// Унарные операции.
+    /// Unary operation.
     /// </summary>
     public class UnaryOperations
     {
         /// <summary>
-        /// Возведение в степень.
+        /// Exponentiation.
         /// </summary>
-        /// <param name="firstNumber"> Число </param>
-        /// <param name="secondNumber"> Степень. </param>
-        /// <returns> Результат возведения в степень. </returns>
+        /// <param name="firstNumber"> Number. </param>
+        /// <param name="secondNumber"> Degree. </param>
+        /// <returns> The result of the exponentiation. </returns>
         public static Number Exponentiation(Number firstNumber, Number secondNumber) => firstNumber ^ secondNumber;
 
         /// <summary>
-        /// Факториал числа.
+        /// Factorial of the number.
         /// </summary>
-        /// <param name="number"> Число. </param>
-        /// <returns> Результат вычисления факториала. </returns>  
+        /// <param name="number"> Number. </param>
+        /// <returns> Result of calculating the factorial. </returns>  
         public static Number Factorial(Number number) => !number;
     }
 }

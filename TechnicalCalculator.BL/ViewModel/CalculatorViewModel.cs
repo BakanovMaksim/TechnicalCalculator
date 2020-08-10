@@ -1,21 +1,20 @@
-﻿using System;
-using TechnicalCalculator.BL.Model;
+﻿using TechnicalCalculator.BL.Model;
 
 namespace TechnicalCalculator.BL.ViewModel
 {
     /// <summary>
-    /// Логика калькулятора.
+    /// Logic of the calculator.
     /// </summary>
     public class CalculatorViewModel
     {
-        #region Свойства
+        #region Properties
         /// <summary>
-        /// Калькулятор.
+        /// Calculator.
         /// </summary>
         public Calculator Calculator { get; }
 
         /// <summary>
-        /// Выражение преобразованное в обратную Польскую нотацию.
+        /// The expression is converted to reverse Polish notation.
         /// </summary>
         public string ReverseExpression { get; private set; }
         #endregion
@@ -26,20 +25,20 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Сбор данных и вычисление выражения.
+        /// Data collection and expression calculation.
         /// </summary>
         private void CompletionData()
         {
             ReverseExpression = ReversePolishNotation.GetExpression(Calculator.Expression);
 
-            Calculator.ResultNumber = ReversePolishNotation.Counting(ReverseExpression,Calculator.FirstNumber,Calculator.SecondNumber);
+            Calculator.ResultNumber = ReversePolishNotation.Counting(ReverseExpression, Calculator.FirstNumber, Calculator.SecondNumber);
 
             Calculator.Expression = Calculator.ResultNumber?.Value.ToString();
         }
 
-        #region Команды
+        #region Commands
         /// <summary>
-        /// Команда вывода результата.
+        /// Output result command.
         /// </summary>
         private RelayCommand _resultCommand;
         public RelayCommand ResultCommand
@@ -48,7 +47,7 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Команда очистки выражения.
+        /// Command to clear the expression.
         /// </summary>
         private RelayCommand _clearCommand;
         public RelayCommand ClearCommand
@@ -57,7 +56,7 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Команда сохранения результата в памяти.
+        /// Command to save the result in memory.
         /// </summary>
         private RelayCommand _saveMemoryCommand;
         public RelayCommand SaveMemoryCommand
@@ -66,7 +65,7 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Команда вывода числа в памяти на экран.
+        /// Command to display a number in memory on the screen.
         /// </summary>
         private RelayCommand _enterMemoryCommand;
         public RelayCommand EnterMemoryCommand
@@ -75,7 +74,7 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Команда очистки числа в памяти.
+        /// Command to clear a number in memory.
         /// </summary>
         private RelayCommand _clearMemoryCommand;
         public RelayCommand ClearMemoryCommand
@@ -84,7 +83,7 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Команда сложения числа в памяти с результатом.
+        /// Command to add a number in memory with the result.
         /// </summary>
         private RelayCommand _addMemoryCommand;
         public RelayCommand AddMemoryCommand
@@ -93,7 +92,7 @@ namespace TechnicalCalculator.BL.ViewModel
         }
 
         /// <summary>
-        /// Команда вычитания числа в памяти с результатом.
+        /// Command to subtract a number in memory with the result.
         /// </summary>
         private RelayCommand _subMemoryCommand;
         public RelayCommand SubMemoryCommand

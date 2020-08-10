@@ -5,12 +5,12 @@ using System.Runtime.CompilerServices;
 namespace TechnicalCalculator.BL.Model
 {
     /// <summary>
-    /// Базовый класс для числа.
+    /// Base class for a number.
     /// </summary>
     public class Number : INotifyPropertyChanged
     {
         /// <summary>
-        /// Тип числа.
+        /// Type of number.
         /// </summary>
         private string _type;
         public string Type
@@ -24,7 +24,7 @@ namespace TechnicalCalculator.BL.Model
         }
 
         /// <summary>
-        /// Значение числа.
+        /// Value of number.
         /// </summary>
         private double _value;
         public double Value
