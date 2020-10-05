@@ -1,6 +1,7 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+
+using TechnicalCalculator.BL.Model.Operations;
 
 namespace TechnicalCalculator.BL.Model
 {
@@ -37,30 +38,22 @@ namespace TechnicalCalculator.BL.Model
             }
         }
 
-        public static Number operator +(Number firstNumber, Number secondNumber) => new Number() { Value = firstNumber.Value + secondNumber.Value };
+        public static Number operator +(Number leftNumber, Number rightNumber) => OperationsHelper.Addition(leftNumber, rightNumber);
 
-        public static Number operator -(Number firstNumber, Number secondNumber) => new Number() { Value = firstNumber.Value - secondNumber.Value };
+        public static Number operator -(Number leftNumber, Number rightNumber) => OperationsHelper.Substraction(leftNumber, rightNumber);
 
-        public static Number operator *(Number firstNumber, Number secondNumber) => new Number() { Value = firstNumber.Value * secondNumber.Value };
+        public static Number operator *(Number leftNumber, Number rightNumber) => OperationsHelper.Multiplication(leftNumber, rightNumber);
 
-        public static Number operator /(Number firstNumber, Number secondNumber) => new Number() { Value = firstNumber.Value / secondNumber.Value };
+        public static Number operator /(Number leftNumber, Number rightNumber) => OperationsHelper.Division(leftNumber, rightNumber);
 
-        public static Number operator %(Number firstNumber, Number secondNumber) => new Number() { Value = firstNumber.Value % secondNumber.Value };
+        public static Number operator %(Number leftNumber, Number rightNumber) => OperationsHelper.DivisionReaminder(leftNumber, rightNumber);
 
-        public static Number operator ^(Number firstNumber, Number secondNumber) => new Number() { Value = Math.Pow(firstNumber.Value, secondNumber.Value) };
+        public static Number operator ^(Number leftNumber, Number rightNumber) => OperationsHelper.Exponentiation(leftNumber, rightNumber);
 
-        public static Number operator !(Number number)
-        {
-            var temp = 1;
-
-            for (int k = 2; k <= number.Value; k++)
-                temp *= k;
-
-            return new Number() { Value = temp };
-        }
+        public static Number operator !(Number number) => OperationsHelper.Factorial(number);
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
     }
 }
