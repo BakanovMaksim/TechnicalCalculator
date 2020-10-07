@@ -7,42 +7,87 @@ namespace TechnicalCalculatorTests
     [TestFixture]
     public class OperationsTest
     {
-        [Test]
-        public void BinaryOperation_InputArgument_ReturnedValue()
+        [TestCase(9,4,13)]
+        [Category("Binary operation")]
+        public void AdditionInputArgumentReturnedValue(int leftValue, int rightValue, int expectedValue)
         {
-            //Arrange
-            var firstNumber = new Number() { Value = 9 };
-            var secondNumber = new Number() { Value = 4 };
+            var leftNumber = new Number() { Value = leftValue };
+            var rightNumber = new Number() { Value = rightValue };
 
-            //Act
-            var resultAddition = BinaryOperations.Addition(firstNumber, secondNumber);
-            var resultSubsctraction = BinaryOperations.Subsctraction(firstNumber, secondNumber);
-            var resultMultiplication = BinaryOperations.Multiplication(firstNumber, secondNumber);
-            var resultDivision = BinaryOperations.Division(firstNumber, secondNumber);
-            var resultDivisionReaminder = BinaryOperations.DivisionReaminder(firstNumber, secondNumber);
+            var result = BinaryOperations.Addition(leftNumber, rightNumber);
 
-            //Assert
-            Assert.AreEqual(13, resultAddition.Value);
-            Assert.AreEqual(5, resultSubsctraction.Value);
-            Assert.AreEqual(36, resultMultiplication.Value);
-            Assert.AreEqual(2.25, resultDivision.Value);
-            Assert.AreEqual(1, resultDivisionReaminder.Value);
+            Assert.AreEqual(expectedValue, result.Value);
         }
 
-        [Test]
-        public void UnaryOperation_InputArgument_ReturnedValue()
+        [TestCase(9, 4,5)]
+        [Category("Binary operation")]
+        public void SubstractionInputArgumentReturnedValue(int leftValue, int rightValue, int expectedValue)
         {
-            //Arrange
-            var firstNumber = new Number() { Value = 5 };
-            var secondNumber = new Number() { Value = 3 };
+            var leftNumber = new Number() { Value = leftValue };
+            var rightNumber = new Number() { Value = rightValue };
 
-            //Act
-            var resultExponentiation = UnaryOperations.Exponentiation(firstNumber, secondNumber);
-            var resultFactorial = UnaryOperations.Factorial(firstNumber);
+            var result = BinaryOperations.Subsctraction(leftNumber, rightNumber);
 
-            //Assert
-            Assert.AreEqual(125, resultExponentiation.Value);
-            Assert.AreEqual(120, resultFactorial.Value);
+            Assert.AreEqual(expectedValue, result.Value);
+        }
+
+        [TestCase(9, 4, 36)]
+        [Category("Binary operation")]
+        public void MultiplicationInputArgumentReturnedValue(int leftValue, int rightValue, int expectedValue)
+        {
+            var leftNumber = new Number() { Value = leftValue };
+            var rightNumber = new Number() { Value = rightValue };
+
+            var result = BinaryOperations.Multiplication(leftNumber, rightNumber);
+
+            Assert.AreEqual(expectedValue, result.Value);
+        }
+
+        [TestCase(9, 4, 2.25)]
+        [Category("Binary operation")]
+        public void DivisionInputArgumentReturnedValue(int leftValue, int rightValue, double expectedValue)
+        {
+            var leftNumber = new Number() { Value = leftValue };
+            var rightNumber = new Number() { Value = rightValue };
+
+            var result = BinaryOperations.Division(leftNumber, rightNumber);
+
+            Assert.AreEqual(expectedValue, result.Value);
+        }
+
+        [TestCase(9, 4, 1)]
+        [Category("Binary operation")]
+        public void DivisionReaminderInputArgumentReturnedValue(int leftValue, int rightValue, int expectedValue)
+        {
+            var leftNumber = new Number() { Value = leftValue };
+            var rightNumber = new Number() { Value = rightValue };
+
+            var result = BinaryOperations.DivisionReaminder(leftNumber, rightNumber);
+
+            Assert.AreEqual(expectedValue, result.Value);
+        }
+
+        [TestCase(5,3,125)]
+        [Category("Unary operation")]
+        public void ExponentiationInputArgumentReturnedValue(int leftValue,int rightValue, int expectedValue)
+        {
+            var leftNumber = new Number() { Value = leftValue };
+            var rightNumber = new Number() { Value = rightValue };
+
+            var result = UnaryOperations.Exponentiation(leftNumber, rightNumber);
+
+            Assert.AreEqual(expectedValue, result.Value);
+        }
+
+        [TestCase(5,120)]
+        [Category("Unary operation")]
+        public void FactorialInputArgumentReturnedValue(int leftValue, int expectedValue)
+        {
+            var leftNumber = new Number() { Value = leftValue };
+
+            var result = UnaryOperations.Factorial(leftNumber);
+
+            Assert.AreEqual(expectedValue, result.Value);
         }
     }
 }

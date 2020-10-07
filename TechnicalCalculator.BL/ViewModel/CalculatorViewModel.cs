@@ -30,9 +30,7 @@ namespace TechnicalCalculator.BL.ViewModel
         private void CompletionData()
         {
             ReverseExpression = ReversePolishNotation.GetExpression(Calculator.Expression);
-
             Calculator.ResultNumber = ReversePolishNotation.Counting(ReverseExpression, Calculator.FirstNumber, Calculator.SecondNumber);
-
             Calculator.Expression = Calculator.ResultNumber?.Value.ToString();
         }
 

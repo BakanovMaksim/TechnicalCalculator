@@ -52,6 +52,26 @@ namespace TechnicalCalculator.BL.Model
 
         public static Number operator !(Number number) => OperationsHelper.Factorial(number);
 
+        public static bool operator ==(Number leftNumber, Number rightNumber) => leftNumber.Equals(rightNumber);
+
+        public static bool operator !=(Number leftNumber, Number rightNumber) => !leftNumber.Equals(rightNumber);
+
+        public override bool Equals(object obj)
+        {
+            var number = obj as Number;
+            if (number == null)
+            {
+                return false;
+            }
+
+            return this.Value == number.Value ? true : false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
