@@ -11,12 +11,12 @@ namespace TechnicalCalculator.BL.Model
     {
         #region Свойства
         /// <summary>
-        /// The first operand.
+        /// The left operand.
         /// </summary
         public Number FirstNumber { get; }
 
         /// <summary>
-        /// The second operand.
+        /// The right operand.
         /// </summary>
         public Number SecondNumber { get; }
 
