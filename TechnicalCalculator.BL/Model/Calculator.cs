@@ -13,12 +13,12 @@ namespace TechnicalCalculator.BL.Model
         /// <summary>
         /// The left operand.
         /// </summary
-        public Number FirstNumber { get; }
+        public Number LeftNumber { get; }
 
         /// <summary>
         /// The right operand.
         /// </summary>
-        public Number SecondNumber { get; }
+        public Number RightNumber { get; }
 
         /// <summary>
         /// Result.

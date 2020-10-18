@@ -8,10 +8,10 @@
         /// <summary>
         /// Exponentiation.
         /// </summary>
-        /// <param name="firstNumber"> Number. </param>
-        /// <param name="secondNumber"> Degree. </param>
+        /// <param name="number"> Number. </param>
+        /// <param name="degree"> Degree. </param>
         /// <returns> The result of the exponentiation. </returns>
-        public static Number Exponentiation(Number firstNumber, Number secondNumber) => firstNumber ^ secondNumber;
+        public static Number Exponentiation(Number number, Number degree) => number ^ degree;
 
         /// <summary>
         /// Factorial of the number.
